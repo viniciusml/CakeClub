@@ -11,6 +11,7 @@
 		8F30D6872520DD6A00F542A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6862520DD6A00F542A4 /* SceneDelegate.swift */; };
 		8F30D68E2520DD6C00F542A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F30D68D2520DD6C00F542A4 /* Assets.xcassets */; };
 		8F30D6912520DD6C00F542A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F30D68F2520DD6C00F542A4 /* LaunchScreen.storyboard */; };
+		8F30D6A72520E01900F542A4 /* RemoteCakeLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6A62520E01900F542A4 /* RemoteCakeLoaderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +33,7 @@
 		8F30D6922520DD6C00F542A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F30D6972520DD6C00F542A4 /* CakeClubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CakeClubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F30D69D2520DD6C00F542A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F30D6A62520E01900F542A4 /* RemoteCakeLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCakeLoaderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				8F30D69D2520DD6C00F542A4 /* Info.plist */,
+				8F30D6A62520E01900F542A4 /* RemoteCakeLoaderTests.swift */,
 			);
 			path = CakeClubTests;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 					};
 					8F30D6962520DD6C00F542A4 = {
 						CreatedOnToolsVersion = 11.7;
+						LastSwiftMigration = 1170;
 						TestTargetID = 8F30D6802520DD6A00F542A4;
 					};
 				};
@@ -199,6 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F30D6A72520E01900F542A4 /* RemoteCakeLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +384,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 88GXY442T6;
 				INFOPLIST_FILE = CakeClubTests/Info.plist;
@@ -390,6 +396,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = leal.CakeClubTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CakeClub.app/CakeClub";
@@ -401,6 +408,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 88GXY442T6;
 				INFOPLIST_FILE = CakeClubTests/Info.plist;
