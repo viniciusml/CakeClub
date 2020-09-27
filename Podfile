@@ -19,4 +19,9 @@ target 'CakeClub' do
     # Pods for testing
   end
 
+  target 'CI' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
 end
