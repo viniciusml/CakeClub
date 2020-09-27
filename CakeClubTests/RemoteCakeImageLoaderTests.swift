@@ -29,6 +29,17 @@ class RemoteCakeImageLoaderTests: XCTestCase {
         XCTAssertEqual(loader.requestedURLs, [url])
     }
 
+    func test_loadImageTwice_requestsImageFromURLTwice() {
+        let url = URL(string: "https://a-url.com")!
+        let loader = ImageLoaderStub()
+        let imageView = UIImageView()
+
+        loader.loadImage(from: url, into: imageView)
+        loader.loadImage(from: url, into: imageView)
+
+        XCTAssertEqual(loader.requestedURLs, [url , url])
+    }
+
     class ImageLoaderStub: CakeImageLoader {
         var requestedURLs = [URL]()
 
