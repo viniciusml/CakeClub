@@ -30,6 +30,8 @@ class CakeClubIntegrationTests: XCTestCase {
         let imageURL = URL(string: "https://s3-eu-west-1.amazonaws.com/s3.mediafileserver.co.uk/carnation/WebFiles/RecipeImages/lemoncheesecake_lg.jpg")!
         let loader = RemoteCakeImageLoader()
         let view = UIImageView()
+        trackForMemoryLeaks(loader)
+        trackForMemoryLeaks(view)
 
         let exp = expectation(description: "Wait for load completion")
 
@@ -49,6 +51,8 @@ class CakeClubIntegrationTests: XCTestCase {
         let serverURL = URL(string: Constant.endpoint)!
         let client = AFHTTPClient()
         let loader = RemoteCakeLoader(url: serverURL, client: client)
+        trackForMemoryLeaks(client)
+        trackForMemoryLeaks(loader)
 
         let exp = expectation(description: "Wait for load completion")
 

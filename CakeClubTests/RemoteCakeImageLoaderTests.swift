@@ -61,6 +61,8 @@ class RemoteCakeImageLoaderTests: XCTestCase {
     private func makeSUT(url: URL = URL(string: "https://a-url.com")!) -> (sut: ImageLoaderStub, view: UIImageView) {
         let view = UIImageView()
         let sut = ImageLoaderStub()
+        trackForMemoryLeaks(view)
+        trackForMemoryLeaks(sut)
         return (sut, view)
     }
 
@@ -73,7 +75,7 @@ class RemoteCakeImageLoaderTests: XCTestCase {
         private static var image: UIImage?
         private var placeholderImage = UIImage.makePlaceholder()
 
-        func loadImage(from url: URL, into view: UIImageView) {
+        func loadImage(from url: URL, into view: UIImageView, completion: CakeImageLoader.CompletionHandler = nil) {
             requestedURLs.append(url)
             guard let image = ImageLoaderStub.image else {
                 view.image = placeholderImage
