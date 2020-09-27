@@ -25,6 +25,7 @@
 		8F30D6B92520F45A00F542A4 /* UIImage+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6B82520F45A00F542A4 /* UIImage+Helpers.swift */; };
 		8F30D6C12520F4C900F542A4 /* CakeClubIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6C02520F4C900F542A4 /* CakeClubIntegrationTests.swift */; };
 		8F30D6C92520F6AC00F542A4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6C82520F6AC00F542A4 /* Constants.swift */; };
+		8F30D6CB2520F8E600F542A4 /* AFHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6CA2520F8E600F542A4 /* AFHTTPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		8F30D6C02520F4C900F542A4 /* CakeClubIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CakeClubIntegrationTests.swift; sourceTree = "<group>"; };
 		8F30D6C22520F4C900F542A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F30D6C82520F6AC00F542A4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8F30D6CA2520F8E600F542A4 /* AFHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFHTTPClient.swift; sourceTree = "<group>"; };
 		ADCBF75706BCA21ADB6DA2AB /* Pods-CakeClubTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CakeClubTests.release.xcconfig"; path = "Target Support Files/Pods-CakeClubTests/Pods-CakeClubTests.release.xcconfig"; sourceTree = "<group>"; };
 		DD6491FBDD3DAE66296E6DC8 /* Pods-CakeClubIntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CakeClubIntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-CakeClubIntegrationTests/Pods-CakeClubIntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,6 +176,7 @@
 				8F30D6AF2520EA7200F542A4 /* HTTPClient.swift */,
 				8F30D6B32520F38000F542A4 /* CakeImageLoader.swift */,
 				8F30D6B52520F3A200F542A4 /* RemoteCakeImageLoader.swift */,
+				8F30D6CA2520F8E600F542A4 /* AFHTTPClient.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F30D6B62520F3A200F542A4 /* RemoteCakeImageLoader.swift in Sources */,
+				8F30D6CB2520F8E600F542A4 /* AFHTTPClient.swift in Sources */,
 				8F30D6A92520E71500F542A4 /* CakeItem.swift in Sources */,
 				8F30D6852520DD6A00F542A4 /* AppDelegate.swift in Sources */,
 				8F30D6B02520EA7200F542A4 /* HTTPClient.swift in Sources */,

@@ -6,26 +6,8 @@
 //  Copyright © 2020 Vinicius Leal. All rights reserved.
 //
 
-import Alamofire
 import CakeClub
 import XCTest
-
-class AFHTTPClient: HTTPClient {
-
-    func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) {
-        AF.request(url)
-            .validate()
-            .responseDecodable(of: CakeList.self) { response in
-
-                switch response.result {
-                case let .success(value):
-                    completion(.success(value))
-                case let .failure(error):
-                    completion(.failure(error))
-                }
-        }
-    }
-}
 
 class CakeClubIntegrationTests: XCTestCase {
 
