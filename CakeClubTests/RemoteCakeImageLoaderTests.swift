@@ -50,6 +50,17 @@ class RemoteCakeImageLoaderTests: XCTestCase {
         XCTAssertEqual(view.image?.pngData(), placeholderImage?.pngData())
     }
 
+    func test_loadImage_deliversCorrectImageOnLoadingSuccess() {
+        let url = URL(string: "https://a-url.com")!
+        let (sut, view) = makeSUT(url: url)
+        let expectedImage = UIImage.make(withColor: .red)
+
+        ImageLoaderStub.stubImage(expectedImage)
+        sut.loadImage(from: url, into: view)
+
+        XCTAssertEqual(view.image?.pngData(), expectedImage.pngData())
+    }
+
     // MARK: - Helpers
 
     private func makeSUT(url: URL = URL(string: "https://a-url.com")!) -> (sut: ImageLoaderStub, view: UIImageView) {
@@ -66,14 +77,33 @@ class RemoteCakeImageLoaderTests: XCTestCase {
         }
 
         func loadImage(from url: URL, into view: UIImageView) {
-            if ImageLoaderStub.image == nil {
-                view.image = placeholderImage
-            }
             requestedURLs.append(url)
+            guard let image = ImageLoaderStub.image else {
+                view.image = placeholderImage
+                return
+            }
+            view.image = image
         }
 
         static func stubError() {
             image = nil
         }
+
+        static func stubImage(_ image: UIImage) {
+            self.image = image
+        }
+    }
+}
+
+extension UIImage {
+    static func make(withColor color: UIColor) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()!
+        context.setFillColor(color.cgColor)
+        context.fill(rect)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return img!
     }
 }
