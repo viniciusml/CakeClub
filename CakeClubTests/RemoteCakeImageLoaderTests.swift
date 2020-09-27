@@ -15,29 +15,36 @@ protocol CakeImageLoader {
 class RemoteCakeImageLoaderTests: XCTestCase {
 
     func test_init_doesNotRequestImageFromURL() {
-        let loader = ImageLoaderStub()
+        let (sut, _) = makeSUT()
 
-        XCTAssertTrue(loader.requestedURLs.isEmpty)
+        XCTAssertTrue(sut.requestedURLs.isEmpty)
     }
 
     func test_loadImage_requestsImageFromURL() {
         let url = URL(string: "https://a-url.com")!
-        let loader = ImageLoaderStub()
+        let (sut, view) = makeSUT(url: url)
 
-        loader.loadImage(from: url, into: UIImageView())
+        sut.loadImage(from: url, into: view)
 
-        XCTAssertEqual(loader.requestedURLs, [url])
+        XCTAssertEqual(sut.requestedURLs, [url])
     }
 
     func test_loadImageTwice_requestsImageFromURLTwice() {
         let url = URL(string: "https://a-url.com")!
-        let loader = ImageLoaderStub()
-        let imageView = UIImageView()
+        let (sut, view) = makeSUT(url: url)
 
-        loader.loadImage(from: url, into: imageView)
-        loader.loadImage(from: url, into: imageView)
+        sut.loadImage(from: url, into: view)
+        sut.loadImage(from: url, into: view)
 
-        XCTAssertEqual(loader.requestedURLs, [url , url])
+        XCTAssertEqual(sut.requestedURLs, [url , url])
+    }
+
+    // MARK: - Helpers
+
+    private func makeSUT(url: URL = URL(string: "https://a-url.com")!) -> (sut: ImageLoaderStub, view: UIImageView) {
+        let view = UIImageView()
+        let sut = ImageLoaderStub()
+        return (sut, view)
     }
 
     class ImageLoaderStub: CakeImageLoader {
