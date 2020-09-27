@@ -13,6 +13,8 @@ public class CakeListViewController: UITableViewController {
     private var imageLoader: CakeImageLoader?
     private var tableModel = CakeList()
 
+    let cellHeight: CGFloat = 280
+
     public convenience init(viewModel: CakeViewModel, imageLoader: CakeImageLoader) {
         self.init()
         self.viewModel = viewModel
@@ -25,6 +27,8 @@ public class CakeListViewController: UITableViewController {
         title = "Would you have some cake?"
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(CakeCell.self)
+
         viewModel?.loadCakes()
 
         viewModel?.onLoadSuccess = { [weak self] in
@@ -37,13 +41,21 @@ public class CakeListViewController: UITableViewController {
     }
 
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cake = viewModel?.cakeList[indexPath.row]
-        let cell = CakeCell()
-        cell.titleLabel.text = cake?.title
-        cell.descriptionLabel.text = cake?.desc
-        if let url = cake?.image {
-            imageLoader?.loadImage(from: url, into: cell.cakeImageView, completion: nil)
-        }
+        let cellModel = viewModel?.cakeList[indexPath.row]
+        guard let cell = dequeueCakeCell(tableView, with: cellModel) else { return UITableViewCell() }
+        return cell
+    }
+
+    public override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        cellHeight
+    }
+
+    private func dequeueCakeCell(_ tableView: UITableView, with item: CakeItem?) -> CakeCell? {
+        guard let cell = tableView.dequeueReusableCell(CakeCell.self),
+              let item = item else { return nil }
+        cell.titleLabel.text = item.title
+        cell.descriptionLabel.text = item.desc
+        imageLoader?.loadImage(from: item.image, into: cell.cakeImageView, completion: nil)
         return cell
     }
 }
