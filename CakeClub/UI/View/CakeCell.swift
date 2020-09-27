@@ -11,21 +11,23 @@ import UIKit
 public class CakeCell: UITableViewCell {
     public let titleLabel: UILabel = {
         let lb = UILabel()
-        lb.font = .systemFont(ofSize: 16, weight: .bold)
+        lb.font = .systemFont(ofSize: 20, weight: .bold)
         return lb
     }()
 
     public let descriptionLabel: UILabel = {
         let lb = UILabel()
-        lb.font = .systemFont(ofSize: 14)
-        lb.numberOfLines = 3
+        lb.font = .systemFont(ofSize: 18, weight: .heavy)
+        lb.textColor = .secondaryLabel
+        lb.numberOfLines = 0
         return lb
     }()
 
     public var cakeImageView: UIImageView = {
         let iv = UIImageView()
         iv.clipsToBounds = true
-        iv.contentMode = .scaleAspectFit
+        iv.contentMode = .scaleAspectFill
+        iv.layer.cornerRadius = 80.0
         return iv
     }()
 
@@ -34,6 +36,7 @@ public class CakeCell: UITableViewCell {
 
         setupViews()
         selectionStyle = .none
+        backgroundColor = UIColor(red: 248/255, green: 216/255, blue: 158/255, alpha: 1.0)
     }
 
     required init?(coder: NSCoder) {
@@ -53,22 +56,23 @@ public class CakeCell: UITableViewCell {
 
     private func setupConstraints() {
         cakeImageView.anchor(top: self.topAnchor,
-                               leading: self.leadingAnchor,
+                               leading: nil,
                                bottom: nil,
-                               trailing: nil,
-                               padding: UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 0),
-                               size: CGSize(width: 80, height: 80))
+                               trailing: self.trailingAnchor,
+                               padding: UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 20),
+                               size: CGSize(width: 160, height: 160))
 
 
         titleLabel.anchor(top: self.topAnchor,
-                         leading: cakeImageView.trailingAnchor,
-                         bottom: nil, trailing: nil,
-                         padding: UIEdgeInsets(top: 20, left: 10, bottom: 0, right: 0))
+                          leading: self.leadingAnchor,
+                         bottom: nil,
+                         trailing: cakeImageView.trailingAnchor,
+                         padding: UIEdgeInsets(top: 30, left: 20, bottom: 0, right: 0))
 
-        descriptionLabel.anchor(top: titleLabel.bottomAnchor,
-                                leading: cakeImageView.trailingAnchor,
+        descriptionLabel.anchor(top: cakeImageView.bottomAnchor,
+                                leading: self.leadingAnchor,
                                 bottom: self.bottomAnchor,
                                 trailing: self.trailingAnchor,
-                                padding: UIEdgeInsets(top: 0, left: 10, bottom: 20, right: 20))
+                                padding: UIEdgeInsets(top: 0, left: 20, bottom: 20, right: 20))
     }
 }
