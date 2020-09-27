@@ -34,6 +34,8 @@
 		8F30D6E125211B2000F542A4 /* CakeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6E025211B2000F542A4 /* CakeViewModel.swift */; };
 		8F30D6E325211B4000F542A4 /* CakeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6E225211B4000F542A4 /* CakeListViewController.swift */; };
 		8F30D6E625211C5B00F542A4 /* UIView+NSLayoutAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6E525211C5B00F542A4 /* UIView+NSLayoutAnchor.swift */; };
+		8F30D6EB25211CE100F542A4 /* UIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6EA25211CE100F542A4 /* UIComposer.swift */; };
+		8F30D6ED25211EE000F542A4 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6EC25211EE000F542A4 /* URL+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +92,8 @@
 		8F30D6E025211B2000F542A4 /* CakeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CakeViewModel.swift; sourceTree = "<group>"; };
 		8F30D6E225211B4000F542A4 /* CakeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CakeListViewController.swift; sourceTree = "<group>"; };
 		8F30D6E525211C5B00F542A4 /* UIView+NSLayoutAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+NSLayoutAnchor.swift"; sourceTree = "<group>"; };
+		8F30D6EA25211CE100F542A4 /* UIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComposer.swift; sourceTree = "<group>"; };
+		8F30D6EC25211EE000F542A4 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		ADCBF75706BCA21ADB6DA2AB /* Pods-CakeClubTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CakeClubTests.release.xcconfig"; path = "Target Support Files/Pods-CakeClubTests/Pods-CakeClubTests.release.xcconfig"; sourceTree = "<group>"; };
 		DD6491FBDD3DAE66296E6DC8 /* Pods-CakeClubIntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CakeClubIntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-CakeClubIntegrationTests/Pods-CakeClubIntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,14 +164,12 @@
 		8F30D6832520DD6A00F542A4 /* CakeClub */ = {
 			isa = PBXGroup;
 			children = (
+				8F30D6E725211CA400F542A4 /* Root */,
 				8F30D6AA2520EA1100F542A4 /* Network */,
 				8F30D6D925211AB500F542A4 /* UI */,
-				8F30D6842520DD6A00F542A4 /* AppDelegate.swift */,
-				8F30D6862520DD6A00F542A4 /* SceneDelegate.swift */,
 				8F30D68D2520DD6C00F542A4 /* Assets.xcassets */,
 				8F30D68F2520DD6C00F542A4 /* LaunchScreen.storyboard */,
 				8F30D6922520DD6C00F542A4 /* Info.plist */,
-				8F30D6C82520F6AC00F542A4 /* Constants.swift */,
 			);
 			path = CakeClub;
 			sourceTree = "<group>";
@@ -282,6 +284,18 @@
 				8F30D6E525211C5B00F542A4 /* UIView+NSLayoutAnchor.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8F30D6E725211CA400F542A4 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				8F30D6842520DD6A00F542A4 /* AppDelegate.swift */,
+				8F30D6862520DD6A00F542A4 /* SceneDelegate.swift */,
+				8F30D6C82520F6AC00F542A4 /* Constants.swift */,
+				8F30D6EA25211CE100F542A4 /* UIComposer.swift */,
+				8F30D6EC25211EE000F542A4 /* URL+Extension.swift */,
+			);
+			path = Root;
 			sourceTree = "<group>";
 		};
 		CB8901B6C0348B68AFF93997 /* Frameworks */ = {
@@ -522,7 +536,9 @@
 				8F30D6852520DD6A00F542A4 /* AppDelegate.swift in Sources */,
 				8F30D6DF25211AFA00F542A4 /* CakeCell.swift in Sources */,
 				8F30D6E625211C5B00F542A4 /* UIView+NSLayoutAnchor.swift in Sources */,
+				8F30D6EB25211CE100F542A4 /* UIComposer.swift in Sources */,
 				8F30D6B02520EA7200F542A4 /* HTTPClient.swift in Sources */,
+				8F30D6ED25211EE000F542A4 /* URL+Extension.swift in Sources */,
 				8F30D6AE2520EA4D00F542A4 /* RemoteCakeLoader.swift in Sources */,
 				8F30D6AC2520EA2900F542A4 /* CakeLoader.swift in Sources */,
 				8F30D6B42520F38000F542A4 /* CakeImageLoader.swift in Sources */,

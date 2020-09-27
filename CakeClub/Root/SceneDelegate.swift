@@ -19,7 +19,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
 
-        window?.rootViewController = UIViewController()
+        let endpointURL = URL(safeString: Constant.endpoint)
+        let cakeListController = CakeListUIComposer.composeCakeListControllerWith(loaderURL: endpointURL)
+        let navigationController = UINavigationController(rootViewController: cakeListController)
+
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
 }
