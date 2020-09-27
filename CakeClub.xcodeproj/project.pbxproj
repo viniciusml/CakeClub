@@ -20,10 +20,18 @@
 		8F30D6B42520F38000F542A4 /* CakeImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6B32520F38000F542A4 /* CakeImageLoader.swift */; };
 		8F30D6B62520F3A200F542A4 /* RemoteCakeImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6B52520F3A200F542A4 /* RemoteCakeImageLoader.swift */; };
 		8F30D6B92520F45A00F542A4 /* UIImage+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6B82520F45A00F542A4 /* UIImage+Helpers.swift */; };
+		8F30D6C12520F4C900F542A4 /* CakeClubIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6C02520F4C900F542A4 /* CakeClubIntegrationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		8F30D6982520DD6C00F542A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8F30D6792520DD6A00F542A4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8F30D6802520DD6A00F542A4;
+			remoteInfo = CakeClub;
+		};
+		8F30D6C32520F4C900F542A4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8F30D6792520DD6A00F542A4 /* Project object */;
 			proxyType = 1;
@@ -50,6 +58,9 @@
 		8F30D6B32520F38000F542A4 /* CakeImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CakeImageLoader.swift; sourceTree = "<group>"; };
 		8F30D6B52520F3A200F542A4 /* RemoteCakeImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCakeImageLoader.swift; sourceTree = "<group>"; };
 		8F30D6B82520F45A00F542A4 /* UIImage+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Helpers.swift"; sourceTree = "<group>"; };
+		8F30D6BE2520F4C900F542A4 /* CakeClubIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CakeClubIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F30D6C02520F4C900F542A4 /* CakeClubIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CakeClubIntegrationTests.swift; sourceTree = "<group>"; };
+		8F30D6C22520F4C900F542A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +78,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8F30D6BB2520F4C900F542A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -75,6 +93,7 @@
 			children = (
 				8F30D6832520DD6A00F542A4 /* CakeClub */,
 				8F30D69A2520DD6C00F542A4 /* CakeClubTests */,
+				8F30D6BF2520F4C900F542A4 /* CakeClubIntegrationTests */,
 				8F30D6822520DD6A00F542A4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -84,6 +103,7 @@
 			children = (
 				8F30D6812520DD6A00F542A4 /* CakeClub.app */,
 				8F30D6972520DD6C00F542A4 /* CakeClubTests.xctest */,
+				8F30D6BE2520F4C900F542A4 /* CakeClubIntegrationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -133,6 +153,15 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		8F30D6BF2520F4C900F542A4 /* CakeClubIntegrationTests */ = {
+			isa = PBXGroup;
+			children = (
+				8F30D6C02520F4C900F542A4 /* CakeClubIntegrationTests.swift */,
+				8F30D6C22520F4C900F542A4 /* Info.plist */,
+			);
+			path = CakeClubIntegrationTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -171,6 +200,24 @@
 			productReference = 8F30D6972520DD6C00F542A4 /* CakeClubTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		8F30D6BD2520F4C900F542A4 /* CakeClubIntegrationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F30D6C72520F4C900F542A4 /* Build configuration list for PBXNativeTarget "CakeClubIntegrationTests" */;
+			buildPhases = (
+				8F30D6BA2520F4C900F542A4 /* Sources */,
+				8F30D6BB2520F4C900F542A4 /* Frameworks */,
+				8F30D6BC2520F4C900F542A4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8F30D6C42520F4C900F542A4 /* PBXTargetDependency */,
+			);
+			name = CakeClubIntegrationTests;
+			productName = CakeClubIntegrationTests;
+			productReference = 8F30D6BE2520F4C900F542A4 /* CakeClubIntegrationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -187,6 +234,10 @@
 					8F30D6962520DD6C00F542A4 = {
 						CreatedOnToolsVersion = 11.7;
 						LastSwiftMigration = 1170;
+						TestTargetID = 8F30D6802520DD6A00F542A4;
+					};
+					8F30D6BD2520F4C900F542A4 = {
+						CreatedOnToolsVersion = 11.7;
 						TestTargetID = 8F30D6802520DD6A00F542A4;
 					};
 				};
@@ -206,6 +257,7 @@
 			targets = (
 				8F30D6802520DD6A00F542A4 /* CakeClub */,
 				8F30D6962520DD6C00F542A4 /* CakeClubTests */,
+				8F30D6BD2520F4C900F542A4 /* CakeClubIntegrationTests */,
 			);
 		};
 /* End PBXProject section */
@@ -221,6 +273,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8F30D6952520DD6C00F542A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F30D6BC2520F4C900F542A4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -255,6 +314,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8F30D6BA2520F4C900F542A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F30D6C12520F4C900F542A4 /* CakeClubIntegrationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -262,6 +329,11 @@
 			isa = PBXTargetDependency;
 			target = 8F30D6802520DD6A00F542A4 /* CakeClub */;
 			targetProxy = 8F30D6982520DD6C00F542A4 /* PBXContainerItemProxy */;
+		};
+		8F30D6C42520F4C900F542A4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8F30D6802520DD6A00F542A4 /* CakeClub */;
+			targetProxy = 8F30D6C32520F4C900F542A4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -474,6 +546,48 @@
 			};
 			name = Release;
 		};
+		8F30D6C52520F4C900F542A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 88GXY442T6;
+				INFOPLIST_FILE = CakeClubIntegrationTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = leal.CakeClubIntegrationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CakeClub.app/CakeClub";
+			};
+			name = Debug;
+		};
+		8F30D6C62520F4C900F542A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 88GXY442T6;
+				INFOPLIST_FILE = CakeClubIntegrationTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = leal.CakeClubIntegrationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CakeClub.app/CakeClub";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -500,6 +614,15 @@
 			buildConfigurations = (
 				8F30D6A42520DD6C00F542A4 /* Debug */,
 				8F30D6A52520DD6C00F542A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8F30D6C72520F4C900F542A4 /* Build configuration list for PBXNativeTarget "CakeClubIntegrationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F30D6C52520F4C900F542A4 /* Debug */,
+				8F30D6C62520F4C900F542A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
