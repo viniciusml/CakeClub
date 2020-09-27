@@ -9,72 +9,6 @@
 import CakeClub
 import XCTest
 
-class CakeCell: UITableViewCell {
-    let titleLabel = UILabel()
-    let descriptionLabel = UILabel()
-    let cakeImageView = UIImageView()
-}
-
-class CakeViewModel {
-    private let cakeLoader: CakeLoader
-
-    var onLoadSuccess: (() -> Void)?
-    private(set) var cakeList = CakeList()
-
-    init(cakeLoader: CakeLoader) {
-        self.cakeLoader = cakeLoader
-    }
-
-    func loadCakes() {
-        cakeLoader.load { [weak self] result in
-            if let cakeList = try? result.get() {
-                self?.cakeList = cakeList
-                self?.onLoadSuccess?()
-            }
-        }
-    }
-}
-
-class CakeListViewController: UITableViewController {
-    private var viewModel: CakeViewModel?
-    private var imageLoader: CakeImageLoader?
-    private var tableModel = CakeList()
-
-    convenience init(viewModel: CakeViewModel, imageLoader: CakeImageLoader) {
-        self.init()
-        self.viewModel = viewModel
-        self.imageLoader = imageLoader
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        title = "Would you have some cake?"
-        tableView.delegate = self
-        tableView.dataSource = self
-        viewModel?.loadCakes()
-
-        viewModel?.onLoadSuccess = { [weak self] in
-            self?.tableView.reloadData()
-        }
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel?.cakeList.count ?? 0
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cake = viewModel?.cakeList[indexPath.row]
-        let cell = CakeCell()
-        cell.titleLabel.text = cake?.title
-        cell.descriptionLabel.text = cake?.desc
-        if let url = cake?.image {
-            imageLoader?.loadImage(from: url, into: cell.cakeImageView, completion: nil)
-        }
-        return cell
-    }
-}
-
 class CakeListUIIntegrationTests: XCTestCase {
     func test_viewDidLoad_showsCorrectTitle() {
         let (sut, _) = makeSUT()
@@ -168,6 +102,10 @@ class CakeListUIIntegrationTests: XCTestCase {
         URL(string: "https://cake-url-\(id).com")!
     }
 
+    private func makeImageData() -> Data {
+        UIImage.make(withColor: .red).pngData()!
+    }
+
     class RemoteCakeLoaderSpy: CakeLoader, CakeImageLoader {
 
         // MARK: - Cake List Loader
@@ -209,8 +147,9 @@ private extension CakeListViewController {
         return ds?.tableView(tableView, cellForRowAt: index)
     }
 
-    func simulateCakeViewVisible(at index: Int) {
-        _ = cakeItem(at: index)
+    @discardableResult
+    func simulateCakeViewVisible(at index: Int) -> CakeCell? {
+        cakeItem(at: index) as? CakeCell
     }
 }
 
@@ -221,5 +160,9 @@ private extension CakeCell {
 
     var cakeDescription: String? {
         descriptionLabel.text
+    }
+
+    var imageData: Data? {
+        cakeImageView.image?.pngData()
     }
 }
