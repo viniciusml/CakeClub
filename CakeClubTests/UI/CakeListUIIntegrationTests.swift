@@ -117,9 +117,6 @@ class CakeListUIIntegrationTests: XCTestCase {
         let item0 = makeCake(0)
         let item1 = makeCake(1)
 
-        let expectedURL0 = URL(string: "https://cake-url-0.com")!
-        let expectedURL1 = URL(string: "https://cake-url-1.com")!
-
         let (sut, loader) = makeSUT()
 
         sut.loadViewIfNeeded()
@@ -128,10 +125,10 @@ class CakeListUIIntegrationTests: XCTestCase {
         XCTAssertEqual(loader.loadedImageURLs, [], "Expected no image URL requests until views become visible")
 
         sut.simulateCakeViewVisible(at: 0)
-        XCTAssertEqual(loader.loadedImageURLs, [expectedURL0], "Expected first image URL request once first view becomes visible")
+        XCTAssertEqual(loader.loadedImageURLs, [cakeImageURL(0)], "Expected first image URL request once first view becomes visible")
 
         sut.simulateCakeViewVisible(at: 1)
-        XCTAssertEqual(loader.loadedImageURLs, [expectedURL0, expectedURL1], "Expected second image URL request once second view also becomes visible")
+        XCTAssertEqual(loader.loadedImageURLs, [cakeImageURL(0), cakeImageURL(1)], "Expected second image URL request once second view also becomes visible")
     }
 
     // MARK: - Helpers
@@ -165,6 +162,10 @@ class CakeListUIIntegrationTests: XCTestCase {
 
         XCTAssertEqual(cell.cakeTitle, item.title, "Expected title text to be \(String(describing: item.title)) for label at index \(index)", file: file, line: line)
         XCTAssertEqual(cell.cakeDescription, item.desc, "Expected description text to be \(String(describing: item.desc)) for label at index \(index)", file: file, line: line)
+    }
+
+    private func cakeImageURL(_ id: Int) -> URL {
+        URL(string: "https://cake-url-\(id).com")!
     }
 
     class RemoteCakeLoaderSpy: CakeLoader, CakeImageLoader {
