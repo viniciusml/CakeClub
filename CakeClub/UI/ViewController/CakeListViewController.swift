@@ -37,6 +37,10 @@ public class CakeListViewController: UITableViewController {
             self?.tableView.reloadData()
         }
 
+        viewModel?.onLoadFailure = { [weak self] in
+            self?.showBasicAlert(title: "Alert", message: "Something went wrong. Please try again.")
+        }
+
         viewModel?.loadCakes()
     }
 

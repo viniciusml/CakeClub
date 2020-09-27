@@ -9,9 +9,11 @@
 import Foundation
 
 public class CakeViewModel {
+    typealias Observer = (() -> Void)
     private let cakeLoader: CakeLoader
 
-    var onLoadSuccess: (() -> Void)?
+    var onLoadSuccess: Observer?
+    var onLoadFailure: Observer?
     private(set) var cakeList = CakeList()
 
     public init(cakeLoader: CakeLoader) {
@@ -20,9 +22,14 @@ public class CakeViewModel {
 
     func loadCakes() {
         cakeLoader.load { [weak self] result in
-            if let cakeList = try? result.get() {
-                self?.cakeList = cakeList
-                self?.onLoadSuccess?()
+            guard let self = self else { return }
+
+            switch result {
+            case let .success(cakeList):
+                self.cakeList = cakeList
+                self.onLoadSuccess?()
+            case .failure:
+                self.onLoadFailure?()
             }
         }
     }
