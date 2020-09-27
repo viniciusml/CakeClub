@@ -13,7 +13,7 @@ public class CakeListViewController: UITableViewController {
     private var imageLoader: CakeImageLoader?
     private var tableModel = CakeList()
 
-    let cellHeight: CGFloat = 280
+    let cellHeight: CGFloat = 260
 
     public convenience init(viewModel: CakeViewModel, imageLoader: CakeImageLoader) {
         self.init()
@@ -29,11 +29,15 @@ public class CakeListViewController: UITableViewController {
         tableView.dataSource = self
         tableView.register(CakeCell.self)
 
-        viewModel?.loadCakes()
+        bind(tableView, to: viewModel)
+    }
 
+    private func bind(_ tableView: UITableView, to viewModel: CakeViewModel?) {
         viewModel?.onLoadSuccess = { [weak self] in
             self?.tableView.reloadData()
         }
+
+        viewModel?.loadCakes()
     }
 
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
