@@ -8,17 +8,46 @@
 
 import XCTest
 
-class RemoteCakeLoader {}
+class RemoteCakeLoader {
+    let client: HTTPClient
 
-class HTTPClient {
-    var requestedURL: URL?
+    init(client: HTTPClient) {
+        self.client = client
+    }
+
+    func load() {
+        client.get(from: URL(string: "https://a-url.com")!)
+    }
+}
+
+protocol HTTPClient {
+    func get(from url: URL)
 }
 
 class RemoteCakeLoaderTests: XCTestCase {
     func test_init_doesNotRequestDataFromURL() {
-        let client = HTTPClient()
-        _ = RemoteCakeLoader()
+        let client = HTTPClientSpy()
+        _ = RemoteCakeLoader(client: client)
 
         XCTAssertNil(client.requestedURL)
+    }
+
+    func test_load_requestsDataFromURL() {
+        let client = HTTPClientSpy()
+        let sut = RemoteCakeLoader(client: client)
+
+        sut.load()
+
+        XCTAssertNotNil(client.requestedURL)
+    }
+
+    // MARK: Helpers
+
+    class HTTPClientSpy: HTTPClient {
+        var requestedURL: URL?
+
+        func get(from url: URL) {
+            requestedURL = url
+        }
     }
 }
