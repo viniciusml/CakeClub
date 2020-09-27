@@ -87,13 +87,12 @@ class RemoteCakeLoaderTests: XCTestCase {
     }
 
     func test_load_deliversItemsOnSuccessfulResponseWithItems() {
-        let item0 = CakeItem(title: "Cake 1", desc: "Cake desc 1", image: URL(string: "https://a-url.com")!)
-        let item1 = CakeItem(title: "Cake 1", desc: "Cake desc 1", image: URL(string: "https://a-url.com")!)
+        let cakeList = [makeCake(1), makeCake(2), makeCake(3)]
 
         let (sut, client) = makeSUT()
 
-        expect(sut, toCompleteWith: .success([item0, item1]), when: {
-            client.complete(with: [item0, item1])
+        expect(sut, toCompleteWith: .success(cakeList), when: {
+            client.complete(with: cakeList)
         })
     }
 
@@ -113,6 +112,10 @@ class RemoteCakeLoaderTests: XCTestCase {
         action()
 
         XCTAssertEqual(capturedResults, [result], file: file, line: line)
+    }
+
+    private func makeCake(_ id: Int) -> CakeItem {
+        CakeItem(title: "Cake \(id)", desc: "Cake desc \(id)", image: URL(string: "https://cake-url-\(id).com")!)
     }
 
     class HTTPClientSpy: HTTPClient {
