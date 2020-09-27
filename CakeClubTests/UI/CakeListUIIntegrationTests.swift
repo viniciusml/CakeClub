@@ -15,6 +15,10 @@ class CakeViewModel {
     init(cakeLoader: CakeLoader) {
         self.cakeLoader = cakeLoader
     }
+
+    func loadCakes() {
+        cakeLoader.load { _ in }
+    }
 }
 
 class CakeListViewController: UIViewController {
@@ -30,6 +34,7 @@ class CakeListViewController: UIViewController {
         super.viewDidLoad()
 
         title = "Would you have some cake?"
+        viewModel?.loadCakes()
     }
 }
 
@@ -49,6 +54,16 @@ class CakeListUIIntegrationTests: XCTestCase {
         _ = CakeListViewController(viewModel: viewModel)
 
         XCTAssertEqual(loader.loadCallCount, 0)
+    }
+
+    func test_viewDidLoad_requestsCakesLoading() {
+        let loader = RemoteCakeLoaderSpy()
+        let viewModel = CakeViewModel(cakeLoader: loader)
+        let sut = CakeListViewController(viewModel: viewModel)
+
+        sut.loadViewIfNeeded()
+
+        XCTAssertEqual(loader.loadCallCount, 1)
     }
 
     // MARK: - Helpers
