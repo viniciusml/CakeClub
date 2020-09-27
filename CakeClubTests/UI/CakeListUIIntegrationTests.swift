@@ -93,20 +93,18 @@ class CakeListUIIntegrationTests: XCTestCase {
     }
 
     func test_loadCakesCompletion_rendersSuccessfullyLoadedList() {
-        let item0 = makeCake(1)
+        var itemList = [CakeItem]()
+        for n in 0...10 {
+            itemList.append(makeCake(n))
+        }
 
         let (sut, loader) = makeSUT()
 
         sut.loadViewIfNeeded()
-        XCTAssertEqual(sut.numberOfRenderedCakeItems(), 0)
+        assertThat(sut, isRendering: [])
 
-        loader.completeListLoading(with: [item0], at: 0)
-        XCTAssertEqual(sut.numberOfRenderedCakeItems(), 1)
-
-        let view = sut.cakeItem(at: 0) as? CakeCell
-        XCTAssertNotNil(view)
-        XCTAssertEqual(view?.cakeTitle, item0.title)
-        XCTAssertEqual(view?.cakeDescription, item0.desc)
+        loader.completeListLoading(with: itemList)
+        assertThat(sut, isRendering: itemList)
     }
 
     // MARK: - Helpers
@@ -119,6 +117,27 @@ class CakeListUIIntegrationTests: XCTestCase {
         trackForMemoryLeaks(viewModel)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, loader)
+    }
+
+    private func assertThat(_ sut: CakeListViewController, isRendering list: CakeList, file: StaticString = #file, line: UInt = #line) {
+        guard sut.numberOfRenderedCakeItems() == list.count else {
+            return XCTFail("Expected \(list.count) items, got \(sut.numberOfRenderedCakeItems()) instead", file: file, line: line)
+        }
+
+        list.enumerated().forEach { index, item in
+            assertThat(sut, hasViewConfiguredFor: item, at: index)
+        }
+    }
+
+    private func assertThat(_ sut: CakeListViewController, hasViewConfiguredFor item: CakeItem, at index: Int, file: StaticString = #file, line: UInt = #line) {
+        let view = sut.cakeItem(at: index)
+
+        guard let cell = view as? CakeCell else {
+            return XCTFail("Expected \(CakeCell.self) instance, got \(String(describing: view)) instead", file: file, line: line)
+        }
+
+        XCTAssertEqual(cell.cakeTitle, item.title, "Expected title text to be \(String(describing: item.title)) for label at index \(index)", file: file, line: line)
+        XCTAssertEqual(cell.cakeDescription, item.desc, "Expected description text to be \(String(describing: item.desc)) for label at index \(index)", file: file, line: line)
     }
 
     class RemoteCakeLoaderSpy: CakeLoader {
