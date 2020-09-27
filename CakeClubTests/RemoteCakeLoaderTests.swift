@@ -9,25 +9,29 @@
 import CakeClub
 import XCTest
 
-class RemoteCakeLoader {
+protocol CakeLoader {
+    typealias Result = Swift.Result<CakeList, LoadingError>
+
+    func load(completion: @escaping (Result) -> Void)
+}
+
+public enum LoadingError: Error {
+    case HTTPClientError
+}
+
+class RemoteCakeLoader: CakeLoader {
     let url: URL
     let client: HTTPClient
-
-    enum Error: Swift.Error {
-        case HTTPClientError
-    }
-
-    typealias Result = Swift.Result<CakeList, Error>
 
     init(url: URL, client: HTTPClient) {
         self.url = url
         self.client = client
     }
 
-    func load(completion: @escaping (Result) -> Void) {
+    func load(completion: @escaping (CakeLoader.Result) -> Void) {
         client.get(from: url) { [weak self] result in
         guard self != nil else { return }
-            
+
             switch result {
             case let .success(items):
                 completion(.success(items))
@@ -120,9 +124,9 @@ class RemoteCakeLoaderTests: XCTestCase {
         return (sut, client)
     }
 
-    private func expect(_ sut: RemoteCakeLoader, toCompleteWith result: RemoteCakeLoader.Result, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+    private func expect(_ sut: RemoteCakeLoader, toCompleteWith result: CakeLoader.Result, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
 
-        var capturedResults = [RemoteCakeLoader.Result]()
+        var capturedResults = [CakeLoader.Result]()
         sut.load { capturedResults.append($0) }
 
         action()
