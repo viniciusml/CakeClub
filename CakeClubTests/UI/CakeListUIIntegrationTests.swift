@@ -12,6 +12,7 @@ import XCTest
 class CakeCell: UITableViewCell {
     let titleLabel = UILabel()
     let descriptionLabel = UILabel()
+    let cakeImageView = UIImageView()
 }
 
 class CakeViewModel {
@@ -36,11 +37,13 @@ class CakeViewModel {
 
 class CakeListViewController: UITableViewController {
     private var viewModel: CakeViewModel?
+    private var imageLoader: CakeImageLoader?
     private var tableModel = CakeList()
 
-    convenience init(viewModel: CakeViewModel) {
+    convenience init(viewModel: CakeViewModel, imageLoader: CakeImageLoader) {
         self.init()
         self.viewModel = viewModel
+        self.imageLoader = imageLoader
     }
 
     override func viewDidLoad() {
@@ -65,6 +68,9 @@ class CakeListViewController: UITableViewController {
         let cell = CakeCell()
         cell.titleLabel.text = cake?.title
         cell.descriptionLabel.text = cake?.desc
+        if let url = cake?.image {
+            imageLoader?.loadImage(from: url, into: cell.cakeImageView, completion: nil)
+        }
         return cell
     }
 }
@@ -107,12 +113,33 @@ class CakeListUIIntegrationTests: XCTestCase {
         assertThat(sut, isRendering: itemList)
     }
 
+    func test_cakeImageView_loadsImageURLWhenVisible() {
+        let item0 = makeCake(0)
+        let item1 = makeCake(1)
+
+        let expectedURL0 = URL(string: "https://cake-url-0.com")!
+        let expectedURL1 = URL(string: "https://cake-url-1.com")!
+
+        let (sut, loader) = makeSUT()
+
+        sut.loadViewIfNeeded()
+        loader.completeListLoading(with: [item0, item1])
+
+        XCTAssertEqual(loader.loadedImageURLs, [], "Expected no image URL requests until views become visible")
+
+        sut.simulateCakeViewVisible(at: 0)
+        XCTAssertEqual(loader.loadedImageURLs, [expectedURL0], "Expected first image URL request once first view becomes visible")
+
+        sut.simulateCakeViewVisible(at: 1)
+        XCTAssertEqual(loader.loadedImageURLs, [expectedURL0, expectedURL1], "Expected second image URL request once second view also becomes visible")
+    }
+
     // MARK: - Helpers
 
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: CakeListViewController, loader: RemoteCakeLoaderSpy) {
         let loader = RemoteCakeLoaderSpy()
         let viewModel = CakeViewModel(cakeLoader: loader)
-        let sut = CakeListViewController(viewModel: viewModel)
+        let sut = CakeListViewController(viewModel: viewModel, imageLoader: loader)
         trackForMemoryLeaks(loader, file: file, line: line)
         trackForMemoryLeaks(viewModel)
         trackForMemoryLeaks(sut, file: file, line: line)
@@ -140,7 +167,10 @@ class CakeListUIIntegrationTests: XCTestCase {
         XCTAssertEqual(cell.cakeDescription, item.desc, "Expected description text to be \(String(describing: item.desc)) for label at index \(index)", file: file, line: line)
     }
 
-    class RemoteCakeLoaderSpy: CakeLoader {
+    class RemoteCakeLoaderSpy: CakeLoader, CakeImageLoader {
+
+        // MARK: - Cake List Loader
+
         private var completions = [(CakeLoader.Result) -> Void]()
 
         var loadCallCount: Int {
@@ -153,6 +183,14 @@ class CakeListUIIntegrationTests: XCTestCase {
 
         func completeListLoading(with list: CakeList = [], at index: Int = 0) {
             completions[index](.success(list))
+        }
+
+        // MARK: - Cake Image Loader
+
+        var loadedImageURLs = [URL]()
+
+        func loadImage(from url: URL, into view: UIImageView = UIImageView(), completion: CakeImageLoader.CompletionHandler) {
+            loadedImageURLs.append(url)
         }
     }
 }
@@ -168,6 +206,10 @@ private extension CakeListViewController {
         let ds = tableView.dataSource
         let index = IndexPath(item: row, section: cakeItemsSection)
         return ds?.tableView(tableView, cellForRowAt: index)
+    }
+
+    func simulateCakeViewVisible(at index: Int) {
+        _ = cakeItem(at: index)
     }
 }
 
