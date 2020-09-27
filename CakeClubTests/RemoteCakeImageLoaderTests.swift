@@ -41,12 +41,12 @@ class RemoteCakeImageLoaderTests: XCTestCase {
 
     func test_loadImage_deliversPlaceholdeImageOnLoadingError() {
         let (sut, view) = makeSUT()
-        let placeholderImage = UIImage(named: "cake-placeholder")
+        let placeholderImage = UIImage.makePlaceholder()
 
         ImageLoaderStub.stubError()
         sut.loadImage(from: anyURL(), into: view)
 
-        XCTAssertEqual(view.image?.pngData(), placeholderImage?.pngData())
+        XCTAssertEqual(view.image?.pngData(), placeholderImage.pngData())
     }
 
     func test_loadImage_deliversCorrectImageOnLoadingSuccess() {
@@ -74,9 +74,7 @@ class RemoteCakeImageLoaderTests: XCTestCase {
     class ImageLoaderStub: CakeImageLoader {
         var requestedURLs = [URL]()
         private static var image: UIImage?
-        private var placeholderImage: UIImage? {
-            UIImage(named: "cake-placeholder")
-        }
+        private var placeholderImage = UIImage.makePlaceholder()
 
         func loadImage(from url: URL, into view: UIImageView) {
             requestedURLs.append(url)
@@ -107,5 +105,9 @@ extension UIImage {
         let img = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return img!
+    }
+
+    static func makePlaceholder() -> UIImage {
+        UIImage(named: "cake-placeholder")!
     }
 }
