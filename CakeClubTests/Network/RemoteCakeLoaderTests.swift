@@ -97,10 +97,6 @@ class RemoteCakeLoaderTests: XCTestCase {
         XCTAssertEqual(capturedResults, [result], file: file, line: line)
     }
 
-    private func makeCake(_ id: Int) -> CakeItem {
-        CakeItem(title: "Cake \(id)", desc: "Cake desc \(id)", image: URL(string: "https://cake-url-\(id).com")!)
-    }
-
     class HTTPClientSpy: HTTPClient {
         private var messages = [(url: URL, completion: (HTTPClient.Result) -> Void)]()
         var requestedURLs: [URL] {
