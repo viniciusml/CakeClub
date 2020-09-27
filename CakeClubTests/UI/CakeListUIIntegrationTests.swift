@@ -10,7 +10,7 @@ import CakeClub
 import XCTest
 
 class CakeCell: UITableViewCell {
-    let nameLabel = UILabel()
+    let titleLabel = UILabel()
     let descriptionLabel = UILabel()
 }
 
@@ -63,7 +63,7 @@ class CakeListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cake = viewModel?.cakeList[indexPath.row]
         let cell = CakeCell()
-        cell.nameLabel.text = cake?.title
+        cell.titleLabel.text = cake?.title
         cell.descriptionLabel.text = cake?.desc
         return cell
     }
@@ -98,17 +98,15 @@ class CakeListUIIntegrationTests: XCTestCase {
         let (sut, loader) = makeSUT()
 
         sut.loadViewIfNeeded()
-        XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), 0)
+        XCTAssertEqual(sut.numberOfRenderedCakeItems(), 0)
 
         loader.completeListLoading(with: [item0], at: 0)
-        XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), 1)
+        XCTAssertEqual(sut.numberOfRenderedCakeItems(), 1)
 
-        let ds = sut.tableView.dataSource
-        let index = IndexPath(item: 0, section: 0)
-        let view = ds?.tableView(sut.tableView, cellForRowAt: index) as? CakeCell
+        let view = sut.cakeItem(at: 0) as? CakeCell
         XCTAssertNotNil(view)
-        XCTAssertEqual(view?.nameLabel.text, item0.title)
-        XCTAssertEqual(view?.descriptionLabel.text, item0.desc)
+        XCTAssertEqual(view?.cakeTitle, item0.title)
+        XCTAssertEqual(view?.cakeDescription, item0.desc)
     }
 
     // MARK: - Helpers
@@ -137,5 +135,29 @@ class CakeListUIIntegrationTests: XCTestCase {
         func completeListLoading(with list: CakeList = [], at index: Int = 0) {
             completions[index](.success(list))
         }
+    }
+}
+
+private extension CakeListViewController {
+    func numberOfRenderedCakeItems() -> Int {
+        tableView.numberOfRows(inSection: cakeItemsSection)
+    }
+
+    private var cakeItemsSection: Int { 0 }
+
+    func cakeItem(at row: Int) -> UITableViewCell? {
+        let ds = tableView.dataSource
+        let index = IndexPath(item: row, section: cakeItemsSection)
+        return ds?.tableView(tableView, cellForRowAt: index)
+    }
+}
+
+private extension CakeCell {
+    var cakeTitle: String? {
+        titleLabel.text
+    }
+
+    var cakeDescription: String? {
+        descriptionLabel.text
     }
 }
