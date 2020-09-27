@@ -41,7 +41,7 @@ class CakeListViewController: UIViewController {
 class CakeListUIIntegrationTests: XCTestCase {
 
     func test_viewDidLoad_showsCorrectTitle() {
-        let sut = CakeListViewController()
+        let (sut, _) = makeSUT()
 
         sut.loadViewIfNeeded()
 
@@ -49,17 +49,13 @@ class CakeListUIIntegrationTests: XCTestCase {
     }
 
     func test_init_doesNotMakeRequest() {
-        let loader = RemoteCakeLoaderSpy()
-        let viewModel = CakeViewModel(cakeLoader: loader)
-        _ = CakeListViewController(viewModel: viewModel)
+        let (_, loader) = makeSUT()
 
         XCTAssertEqual(loader.loadCallCount, 0)
     }
 
     func test_viewDidLoad_requestsCakesLoading() {
-        let loader = RemoteCakeLoaderSpy()
-        let viewModel = CakeViewModel(cakeLoader: loader)
-        let sut = CakeListViewController(viewModel: viewModel)
+        let (sut, loader) = makeSUT()
 
         sut.loadViewIfNeeded()
 
@@ -67,6 +63,16 @@ class CakeListUIIntegrationTests: XCTestCase {
     }
 
     // MARK: - Helpers
+
+    private func makeSUT(file: StaticString = #file, line: UInt = #line)  -> (sut: CakeListViewController, loader: RemoteCakeLoaderSpy) {
+        let loader = RemoteCakeLoaderSpy()
+        let viewModel = CakeViewModel(cakeLoader: loader)
+        let sut = CakeListViewController(viewModel: viewModel)
+        trackForMemoryLeaks(loader, file: file, line: line)
+        trackForMemoryLeaks(viewModel)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return (sut, loader)
+    }
 
     class RemoteCakeLoaderSpy: CakeLoader {
 
