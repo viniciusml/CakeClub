@@ -58,6 +58,10 @@ public class CakeListViewController: UITableViewController {
         cellHeight
     }
 
+    public override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.fadeIn(at: indexPath)
+    }
+
     private func dequeueCakeCell(_ tableView: UITableView, with item: CakeItem?) -> CakeCell? {
         guard let cell = tableView.dequeueReusableCell(CakeCell.self),
               let item = item else { return nil }
