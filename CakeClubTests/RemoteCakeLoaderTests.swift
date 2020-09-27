@@ -43,6 +43,16 @@ class RemoteCakeLoaderTests: XCTestCase {
         XCTAssertNotNil(client.requestedURL)
     }
 
+    func test_loadTwice_requestsDataFromURLTwice() {
+           let url = URL(string: "https://a-url.com")!
+           let (sut, client) = makeSUT(url: url)
+
+           sut.load()
+           sut.load()
+
+           XCTAssertEqual(client.requestedURLs, [url, url])
+       }
+
     // MARK: Helpers
 
     private func makeSUT(url: URL = URL(string: "https://a-url.com")!) -> (sut: RemoteCakeLoader, client: HTTPClientSpy) {
@@ -52,10 +62,12 @@ class RemoteCakeLoaderTests: XCTestCase {
     }
 
     class HTTPClientSpy: HTTPClient {
+        var requestedURLs = [URL]()
         var requestedURL: URL?
 
         func get(from url: URL) {
             requestedURL = url
+            requestedURLs.append(url)
         }
     }
 }
