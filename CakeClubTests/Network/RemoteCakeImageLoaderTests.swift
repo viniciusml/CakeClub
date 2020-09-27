@@ -75,7 +75,7 @@ class RemoteCakeImageLoaderTests: XCTestCase {
         private static var image: UIImage?
         private var placeholderImage = UIImage.makePlaceholder()
 
-        func loadImage(from url: URL, into view: UIImageView, completion: CakeImageLoader.CompletionHandler = nil) {
+        func loadImage(from url: URL, into view: UIImageView) {
             requestedURLs.append(url)
             guard let image = ImageLoaderStub.image else {
                 view.image = placeholderImage

@@ -67,7 +67,7 @@ public class CakeListViewController: UITableViewController {
               let item = item else { return nil }
         cell.titleLabel.text = item.title
         cell.descriptionLabel.text = item.desc
-        imageLoader?.loadImage(from: item.image, into: cell.cakeImageView, completion: nil)
+        imageLoader?.loadImage(from: item.image, into: cell.cakeImageView)
         return cell
     }
 }

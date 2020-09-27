@@ -126,7 +126,7 @@ class CakeListUIIntegrationTests: XCTestCase {
 
         var loadedImageURLs = [URL]()
 
-        func loadImage(from url: URL, into view: UIImageView = UIImageView(), completion: CakeImageLoader.CompletionHandler) {
+        func loadImage(from url: URL, into view: UIImageView) {
             loadedImageURLs.append(url)
         }
     }

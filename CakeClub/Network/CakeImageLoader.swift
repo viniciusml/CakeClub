@@ -9,7 +9,5 @@
 import UIKit
 
 public protocol CakeImageLoader {
-    typealias CompletionHandler = (() -> Void)?
-    
-    func loadImage(from url: URL, into view: UIImageView, completion: CompletionHandler)
+    func loadImage(from url: URL, into view: UIImageView)
 }

@@ -16,11 +16,7 @@ public class RemoteCakeImageLoader: CakeImageLoader {
 
     public init() {}
 
-    public func loadImage(from url: URL, into view: UIImageView, completion: CakeImageLoader.CompletionHandler) {
-        view.sd_setImage(with: url, placeholderImage: placeholderImage, options: .highPriority) { (image, _, _, _) in
-            if image != nil {
-                completion?()
-            }
-        }
+    public func loadImage(from url: URL, into view: UIImageView) {
+        view.sd_setImage(with: url, placeholderImage: placeholderImage, options: .highPriority)
     }
 }
