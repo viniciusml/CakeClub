@@ -69,10 +69,8 @@ class CakeListUIIntegrationTests: XCTestCase {
 
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: CakeListViewController, loader: RemoteCakeLoaderSpy) {
         let loader = RemoteCakeLoaderSpy()
-        let viewModel = CakeViewModel(cakeLoader: loader)
-        let sut = CakeListViewController(viewModel: viewModel, imageLoader: loader)
+        let sut = CakeListUIComposer.cakeListComposedWith(countryLoader: loader, imageLoader: loader)
         trackForMemoryLeaks(loader, file: file, line: line)
-        trackForMemoryLeaks(viewModel)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, loader)
     }
