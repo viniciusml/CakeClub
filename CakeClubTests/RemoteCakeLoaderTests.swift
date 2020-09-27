@@ -63,10 +63,10 @@ class RemoteCakeLoaderTests: XCTestCase {
         let (sut, client) = makeSUT()
         client.error = NSError(domain: "Test", code: 0)
 
-        var capturedError: RemoteCakeLoader.Error?
-        sut.load { error in capturedError = error }
+        var capturedErrors = [RemoteCakeLoader.Error]()
+        sut.load { capturedErrors.append($0) }
 
-        XCTAssertEqual(capturedError, .HTTPClientError)
+        XCTAssertEqual(capturedErrors, [.HTTPClientError])
     }
 
     // MARK: Helpers
