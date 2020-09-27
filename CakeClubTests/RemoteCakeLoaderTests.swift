@@ -12,18 +12,24 @@ class RemoteCakeLoader {
     let url: URL
     let client: HTTPClient
 
+    enum Error: Swift.Error {
+        case HTTPClientError
+    }
+
     init(url: URL, client: HTTPClient) {
         self.url = url
         self.client = client
     }
 
-    func load() {
-        client.get(from: url)
+    func load(completion: @escaping (Error) -> Void = { _ in }) {
+        client.get(from: url) { error in
+            completion(.HTTPClientError)
+        }
     }
 }
 
 protocol HTTPClient {
-    func get(from url: URL)
+    func get(from url: URL, completion: @escaping (Error) -> Void)
 }
 
 class RemoteCakeLoaderTests: XCTestCase {
@@ -53,6 +59,16 @@ class RemoteCakeLoaderTests: XCTestCase {
         XCTAssertEqual(client.requestedURLs, [url, url])
     }
 
+    func test_load_deliversErrorOnClientError() {
+        let (sut, client) = makeSUT()
+        client.error = NSError(domain: "Test", code: 0)
+
+        var capturedError: RemoteCakeLoader.Error?
+        sut.load { error in capturedError = error }
+
+        XCTAssertEqual(capturedError, .HTTPClientError)
+    }
+
     // MARK: Helpers
 
     private func makeSUT(url: URL = URL(string: "https://a-url.com")!) -> (sut: RemoteCakeLoader, client: HTTPClientSpy) {
@@ -63,8 +79,12 @@ class RemoteCakeLoaderTests: XCTestCase {
 
     class HTTPClientSpy: HTTPClient {
         var requestedURLs = [URL]()
+        var error: Error?
 
-        func get(from url: URL) {
+        func get(from url: URL, completion: @escaping (Error) -> Void) {
+            if let error = error {
+                completion(error)
+            }
             requestedURLs.append(url)
         }
     }
