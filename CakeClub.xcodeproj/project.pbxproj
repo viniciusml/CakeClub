@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,6 +24,7 @@
 		8F30D6B62520F3A200F542A4 /* RemoteCakeImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6B52520F3A200F542A4 /* RemoteCakeImageLoader.swift */; };
 		8F30D6B92520F45A00F542A4 /* UIImage+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6B82520F45A00F542A4 /* UIImage+Helpers.swift */; };
 		8F30D6C12520F4C900F542A4 /* CakeClubIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6C02520F4C900F542A4 /* CakeClubIntegrationTests.swift */; };
+		8F30D6C92520F6AC00F542A4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6C82520F6AC00F542A4 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		8F30D6BE2520F4C900F542A4 /* CakeClubIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CakeClubIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F30D6C02520F4C900F542A4 /* CakeClubIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CakeClubIntegrationTests.swift; sourceTree = "<group>"; };
 		8F30D6C22520F4C900F542A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F30D6C82520F6AC00F542A4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		ADCBF75706BCA21ADB6DA2AB /* Pods-CakeClubTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CakeClubTests.release.xcconfig"; path = "Target Support Files/Pods-CakeClubTests/Pods-CakeClubTests.release.xcconfig"; sourceTree = "<group>"; };
 		DD6491FBDD3DAE66296E6DC8 /* Pods-CakeClubIntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CakeClubIntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-CakeClubIntegrationTests/Pods-CakeClubIntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,7 +115,6 @@
 				02B7731E16ED41C6C12EFA90 /* Pods-CakeClubTests.debug.xcconfig */,
 				ADCBF75706BCA21ADB6DA2AB /* Pods-CakeClubTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -149,6 +150,7 @@
 				8F30D68F2520DD6C00F542A4 /* LaunchScreen.storyboard */,
 				8F30D6922520DD6C00F542A4 /* Info.plist */,
 				8F30D6A82520E71500F542A4 /* CakeItem.swift */,
+				8F30D6C82520F6AC00F542A4 /* Constants.swift */,
 			);
 			path = CakeClub;
 			sourceTree = "<group>";
@@ -432,6 +434,7 @@
 				8F30D6AC2520EA2900F542A4 /* CakeLoader.swift in Sources */,
 				8F30D6B42520F38000F542A4 /* CakeImageLoader.swift in Sources */,
 				8F30D6872520DD6A00F542A4 /* SceneDelegate.swift in Sources */,
+				8F30D6C92520F6AC00F542A4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
