@@ -12,6 +12,7 @@
 		8F30D68E2520DD6C00F542A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F30D68D2520DD6C00F542A4 /* Assets.xcassets */; };
 		8F30D6912520DD6C00F542A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F30D68F2520DD6C00F542A4 /* LaunchScreen.storyboard */; };
 		8F30D6A72520E01900F542A4 /* RemoteCakeLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6A62520E01900F542A4 /* RemoteCakeLoaderTests.swift */; };
+		8F30D6A92520E71500F542A4 /* CakeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6A82520E71500F542A4 /* CakeItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 		8F30D6972520DD6C00F542A4 /* CakeClubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CakeClubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F30D69D2520DD6C00F542A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F30D6A62520E01900F542A4 /* RemoteCakeLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCakeLoaderTests.swift; sourceTree = "<group>"; };
+		8F30D6A82520E71500F542A4 /* CakeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CakeItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				8F30D68D2520DD6C00F542A4 /* Assets.xcassets */,
 				8F30D68F2520DD6C00F542A4 /* LaunchScreen.storyboard */,
 				8F30D6922520DD6C00F542A4 /* Info.plist */,
+				8F30D6A82520E71500F542A4 /* CakeItem.swift */,
 			);
 			path = CakeClub;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F30D6A92520E71500F542A4 /* CakeItem.swift in Sources */,
 				8F30D6852520DD6A00F542A4 /* AppDelegate.swift in Sources */,
 				8F30D6872520DD6A00F542A4 /* SceneDelegate.swift in Sources */,
 			);

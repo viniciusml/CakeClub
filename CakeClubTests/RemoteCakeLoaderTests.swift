@@ -6,6 +6,7 @@
 //  Copyright © 2020 Vinicius Leal. All rights reserved.
 //
 
+import CakeClub
 import XCTest
 
 class RemoteCakeLoader {
@@ -16,7 +17,7 @@ class RemoteCakeLoader {
         case HTTPClientError
     }
 
-    typealias Result = Swift.Result<[String], Error>
+    typealias Result = Swift.Result<CakeList, Error>
 
     init(url: URL, client: HTTPClient) {
         self.url = url
@@ -36,7 +37,7 @@ class RemoteCakeLoader {
 }
 
 protocol HTTPClient {
-    typealias Result = Swift.Result<[String], Error>
+    typealias Result = Swift.Result<CakeList, Error>
 
     func get(from url: URL, completion: @escaping (Result) -> Void)
 }
@@ -85,6 +86,17 @@ class RemoteCakeLoaderTests: XCTestCase {
         })
     }
 
+    func test_load_deliversItemsOnSuccessfulResponseWithItems() {
+        let item0 = CakeItem(title: "Cake 1", desc: "Cake desc 1", image: URL(string: "https://a-url.com")!)
+        let item1 = CakeItem(title: "Cake 1", desc: "Cake desc 1", image: URL(string: "https://a-url.com")!)
+
+        let (sut, client) = makeSUT()
+
+        expect(sut, toCompleteWith: .success([item0, item1]), when: {
+            client.complete(with: [item0, item1])
+        })
+    }
+
     // MARK: Helpers
 
     private func makeSUT(url: URL = URL(string: "https://a-url.com")!) -> (sut: RemoteCakeLoader, client: HTTPClientSpy) {
@@ -117,7 +129,7 @@ class RemoteCakeLoaderTests: XCTestCase {
             messages[0].completion(.failure(error))
         }
 
-        func complete(with items: [String]) {
+        func complete(with items: CakeList) {
             messages[0].completion(.success(items))
         }
     }
