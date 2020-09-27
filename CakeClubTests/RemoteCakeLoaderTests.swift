@@ -25,7 +25,9 @@ class RemoteCakeLoader {
     }
 
     func load(completion: @escaping (Result) -> Void) {
-        client.get(from: url) { result in
+        client.get(from: url) { [weak self] result in
+        guard self != nil else { return }
+            
             switch result {
             case let .success(items):
                 completion(.success(items))
@@ -94,6 +96,20 @@ class RemoteCakeLoaderTests: XCTestCase {
         expect(sut, toCompleteWith: .success(cakeList), when: {
             client.complete(with: cakeList)
         })
+    }
+
+    func test_load_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated() {
+        let client = HTTPClientSpy()
+        let url = URL(string: "https://a-url.com")!
+        var sut: RemoteCakeLoader? = RemoteCakeLoader(url: url, client: client)
+
+        var capturedResults = [RemoteCakeLoader.Result]()
+        sut?.load { capturedResults.append($0) }
+
+        sut = nil
+        client.complete(with: [])
+
+        XCTAssertTrue(capturedResults.isEmpty)
     }
 
     // MARK: Helpers
