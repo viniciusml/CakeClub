@@ -9,45 +9,6 @@
 import CakeClub
 import XCTest
 
-protocol CakeLoader {
-    typealias Result = Swift.Result<CakeList, LoadingError>
-
-    func load(completion: @escaping (Result) -> Void)
-}
-
-public enum LoadingError: Error {
-    case HTTPClientError
-}
-
-class RemoteCakeLoader: CakeLoader {
-    let url: URL
-    let client: HTTPClient
-
-    init(url: URL, client: HTTPClient) {
-        self.url = url
-        self.client = client
-    }
-
-    func load(completion: @escaping (CakeLoader.Result) -> Void) {
-        client.get(from: url) { [weak self] result in
-        guard self != nil else { return }
-
-            switch result {
-            case let .success(items):
-                completion(.success(items))
-            case .failure:
-                completion(.failure(.HTTPClientError))
-            }
-        }
-    }
-}
-
-protocol HTTPClient {
-    typealias Result = Swift.Result<CakeList, Error>
-
-    func get(from url: URL, completion: @escaping (Result) -> Void)
-}
-
 class RemoteCakeLoaderTests: XCTestCase {
     func test_init_doesNotRequestDataFromURL() {
         let url = URL(string: "https://a-url.com")!
