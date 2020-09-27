@@ -28,6 +28,7 @@
 		8F30D6CB2520F8E600F542A4 /* AFHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6CA2520F8E600F542A4 /* AFHTTPClient.swift */; };
 		8F30D6CD252101F200F542A4 /* XCTest+MemoryLeakTraking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6CC252101F200F542A4 /* XCTest+MemoryLeakTraking.swift */; };
 		8F30D6CE252101F900F542A4 /* XCTest+MemoryLeakTraking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6CC252101F200F542A4 /* XCTest+MemoryLeakTraking.swift */; };
+		8F30D6D22521039600F542A4 /* CakeListUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6D12521039600F542A4 /* CakeListUIIntegrationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		8F30D6C82520F6AC00F542A4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8F30D6CA2520F8E600F542A4 /* AFHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFHTTPClient.swift; sourceTree = "<group>"; };
 		8F30D6CC252101F200F542A4 /* XCTest+MemoryLeakTraking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+MemoryLeakTraking.swift"; sourceTree = "<group>"; };
+		8F30D6D12521039600F542A4 /* CakeListUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CakeListUIIntegrationTests.swift; sourceTree = "<group>"; };
 		ADCBF75706BCA21ADB6DA2AB /* Pods-CakeClubTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CakeClubTests.release.xcconfig"; path = "Target Support Files/Pods-CakeClubTests/Pods-CakeClubTests.release.xcconfig"; sourceTree = "<group>"; };
 		DD6491FBDD3DAE66296E6DC8 /* Pods-CakeClubIntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CakeClubIntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-CakeClubIntegrationTests/Pods-CakeClubIntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,10 +165,10 @@
 		8F30D69A2520DD6C00F542A4 /* CakeClubTests */ = {
 			isa = PBXGroup;
 			children = (
+				8F30D6D02521037D00F542A4 /* Network */,
+				8F30D6CF2521037600F542A4 /* UI */,
 				8F30D6B72520F44400F542A4 /* Helpers */,
 				8F30D69D2520DD6C00F542A4 /* Info.plist */,
-				8F30D6A62520E01900F542A4 /* RemoteCakeLoaderTests.swift */,
-				8F30D6B12520EB2D00F542A4 /* RemoteCakeImageLoaderTests.swift */,
 			);
 			path = CakeClubTests;
 			sourceTree = "<group>";
@@ -200,6 +202,23 @@
 				8F30D6C22520F4C900F542A4 /* Info.plist */,
 			);
 			path = CakeClubIntegrationTests;
+			sourceTree = "<group>";
+		};
+		8F30D6CF2521037600F542A4 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				8F30D6D12521039600F542A4 /* CakeListUIIntegrationTests.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		8F30D6D02521037D00F542A4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				8F30D6A62520E01900F542A4 /* RemoteCakeLoaderTests.swift */,
+				8F30D6B12520EB2D00F542A4 /* RemoteCakeImageLoaderTests.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		CB8901B6C0348B68AFF93997 /* Frameworks */ = {
@@ -454,6 +473,7 @@
 				8F30D6CD252101F200F542A4 /* XCTest+MemoryLeakTraking.swift in Sources */,
 				8F30D6B22520EB2D00F542A4 /* RemoteCakeImageLoaderTests.swift in Sources */,
 				8F30D6A72520E01900F542A4 /* RemoteCakeLoaderTests.swift in Sources */,
+				8F30D6D22521039600F542A4 /* CakeListUIIntegrationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
