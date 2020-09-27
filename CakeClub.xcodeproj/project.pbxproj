@@ -17,6 +17,8 @@
 		8F30D6AE2520EA4D00F542A4 /* RemoteCakeLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6AD2520EA4D00F542A4 /* RemoteCakeLoader.swift */; };
 		8F30D6B02520EA7200F542A4 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6AF2520EA7200F542A4 /* HTTPClient.swift */; };
 		8F30D6B22520EB2D00F542A4 /* RemoteCakeImageLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6B12520EB2D00F542A4 /* RemoteCakeImageLoaderTests.swift */; };
+		8F30D6B42520F38000F542A4 /* CakeImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6B32520F38000F542A4 /* CakeImageLoader.swift */; };
+		8F30D6B62520F3A200F542A4 /* RemoteCakeImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6B52520F3A200F542A4 /* RemoteCakeImageLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		8F30D6AD2520EA4D00F542A4 /* RemoteCakeLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCakeLoader.swift; sourceTree = "<group>"; };
 		8F30D6AF2520EA7200F542A4 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		8F30D6B12520EB2D00F542A4 /* RemoteCakeImageLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCakeImageLoaderTests.swift; sourceTree = "<group>"; };
+		8F30D6B32520F38000F542A4 /* CakeImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CakeImageLoader.swift; sourceTree = "<group>"; };
+		8F30D6B52520F3A200F542A4 /* RemoteCakeImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCakeImageLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,8 @@
 				8F30D6AB2520EA2900F542A4 /* CakeLoader.swift */,
 				8F30D6AD2520EA4D00F542A4 /* RemoteCakeLoader.swift */,
 				8F30D6AF2520EA7200F542A4 /* HTTPClient.swift */,
+				8F30D6B32520F38000F542A4 /* CakeImageLoader.swift */,
+				8F30D6B52520F3A200F542A4 /* RemoteCakeImageLoader.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -217,11 +223,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F30D6B62520F3A200F542A4 /* RemoteCakeImageLoader.swift in Sources */,
 				8F30D6A92520E71500F542A4 /* CakeItem.swift in Sources */,
 				8F30D6852520DD6A00F542A4 /* AppDelegate.swift in Sources */,
 				8F30D6B02520EA7200F542A4 /* HTTPClient.swift in Sources */,
 				8F30D6AE2520EA4D00F542A4 /* RemoteCakeLoader.swift in Sources */,
 				8F30D6AC2520EA2900F542A4 /* CakeLoader.swift in Sources */,
+				8F30D6B42520F38000F542A4 /* CakeImageLoader.swift in Sources */,
 				8F30D6872520DD6A00F542A4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

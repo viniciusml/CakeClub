@@ -6,11 +6,8 @@
 //  Copyright © 2020 Vinicius Leal. All rights reserved.
 //
 
+import CakeClub
 import XCTest
-
-protocol CakeImageLoader {
-    func loadImage(from url: URL, into view: UIImageView)
-}
 
 class RemoteCakeImageLoaderTests: XCTestCase {
 
