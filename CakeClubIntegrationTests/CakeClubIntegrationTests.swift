@@ -26,6 +26,23 @@ class CakeClubIntegrationTests: XCTestCase {
         }
     }
 
+    func test_endToEndServerGETCakeImageResult_matchesFixedTestData() {
+        let imageURL = URL(string: "https://s3-eu-west-1.amazonaws.com/s3.mediafileserver.co.uk/carnation/WebFiles/RecipeImages/lemoncheesecake_lg.jpg")!
+        let loader = RemoteCakeImageLoader()
+        let view = UIImageView()
+
+        let exp = expectation(description: "Wait for load completion")
+
+        var expectedImageData: Data?
+        loader.loadImage(from: imageURL, into: view) {
+            expectedImageData = view.image?.pngData()
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 5.0)
+
+        XCTAssertNotNil(expectedImageData, "Expected non-empty image data")
+    }
+
     // MARK: - Helpers
 
     private func getCakesResult(file: StaticString = #file, line: UInt = #line) -> CakeLoader.Result? {

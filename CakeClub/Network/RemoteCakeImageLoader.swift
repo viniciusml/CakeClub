@@ -6,10 +6,21 @@
 //  Copyright © 2020 Vinicius Leal. All rights reserved.
 //
 
+import SDWebImage
 import UIKit
 
 public class RemoteCakeImageLoader: CakeImageLoader {
-    public func loadImage(from url: URL, into view: UIImageView) {
+    private var placeholderImage: UIImage? {
+        UIImage(named: Constant.placeholderImageName)
+    }
 
+    public init() {}
+
+    public func loadImage(from url: URL, into view: UIImageView, completion: CakeImageLoader.CompletionHandler) {
+        view.sd_setImage(with: url, placeholderImage: placeholderImage, options: .highPriority) { (image, _, _, _) in
+            if image != nil {
+                completion?()
+            }
+        }
     }
 }
