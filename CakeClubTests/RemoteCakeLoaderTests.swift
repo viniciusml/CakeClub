@@ -16,20 +16,29 @@ class RemoteCakeLoader {
         case HTTPClientError
     }
 
+    typealias Result = Swift.Result<[String], Error>
+
     init(url: URL, client: HTTPClient) {
         self.url = url
         self.client = client
     }
 
-    func load(completion: @escaping (Error) -> Void = { _ in }) {
-        client.get(from: url) { error in
-            completion(.HTTPClientError)
+    func load(completion: @escaping (Result) -> Void) {
+        client.get(from: url) { result in
+            switch result {
+            case let .success(items):
+                completion(.success(items))
+            case .failure:
+                completion(.failure(.HTTPClientError))
+            }
         }
     }
 }
 
 protocol HTTPClient {
-    func get(from url: URL, completion: @escaping (Error) -> Void)
+    typealias Result = Swift.Result<[String], Error>
+
+    func get(from url: URL, completion: @escaping (Result) -> Void)
 }
 
 class RemoteCakeLoaderTests: XCTestCase {
@@ -44,7 +53,7 @@ class RemoteCakeLoaderTests: XCTestCase {
         let url = URL(string: "https://a-url.com")!
         let (sut, client) = makeSUT(url: url)
 
-        sut.load()
+        sut.load { _ in }
 
         XCTAssertEqual(client.requestedURLs, [url])
     }
@@ -53,8 +62,8 @@ class RemoteCakeLoaderTests: XCTestCase {
         let url = URL(string: "https://a-url.com")!
         let (sut, client) = makeSUT(url: url)
 
-        sut.load()
-        sut.load()
+        sut.load { _ in }
+        sut.load { _ in }
 
         XCTAssertEqual(client.requestedURLs, [url, url])
     }
@@ -62,13 +71,24 @@ class RemoteCakeLoaderTests: XCTestCase {
     func test_load_deliversErrorOnClientError() {
         let (sut, client) = makeSUT()
 
-        var capturedErrors = [RemoteCakeLoader.Error]()
+        var capturedErrors = [RemoteCakeLoader.Result]()
         sut.load { capturedErrors.append($0) }
 
         let clientError = NSError(domain: "Test", code: 0)
         client.complete(with: clientError)
 
-        XCTAssertEqual(capturedErrors, [.HTTPClientError])
+        XCTAssertEqual(capturedErrors, [.failure(.HTTPClientError)])
+    }
+
+    func test_load_deliversNoItemsOnSuccessfulResponseWithEmptyList() {
+        let (sut, client) = makeSUT()
+
+        var capturedResults = [RemoteCakeLoader.Result]()
+        sut.load { capturedResults.append($0) }
+
+        client.complete(with: [])
+
+        XCTAssertEqual(capturedResults, [.success([])])
     }
 
     // MARK: Helpers
@@ -80,17 +100,21 @@ class RemoteCakeLoaderTests: XCTestCase {
     }
 
     class HTTPClientSpy: HTTPClient {
-        private var messages = [(url: URL, completion: (Error) -> Void)]()
+        private var messages = [(url: URL, completion: (HTTPClient.Result) -> Void)]()
         var requestedURLs: [URL] {
             messages.map { $0.url }
         }
 
-        func get(from url: URL, completion: @escaping (Error) -> Void) {
+        func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) {
             messages.append((url, completion))
         }
 
         func complete(with error: Error) {
-            messages[0].completion(error)
+            messages[0].completion(.failure(error))
+        }
+
+        func complete(with items: [String]) {
+            messages[0].completion(.success(items))
         }
     }
 }
