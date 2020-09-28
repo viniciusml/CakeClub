@@ -9,16 +9,24 @@
 import UIKit
 
 public class CakeCell: UITableViewCell {
+    public let cellBackgroundView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 8
+        return view
+    }()
+
     public let titleLabel: UILabel = {
         let lb = UILabel()
-        lb.font = .systemFont(ofSize: 20, weight: .bold)
+        lb.font = .systemFont(ofSize: 22, weight: .black)
+        lb.textColor = .white
+        lb.numberOfLines = 2
         return lb
     }()
 
     public let descriptionLabel: UILabel = {
         let lb = UILabel()
         lb.font = .systemFont(ofSize: 18, weight: .heavy)
-        lb.textColor = .secondaryLabel
+        lb.textColor = .tertiaryLabel
         lb.numberOfLines = 0
         return lb
     }()
@@ -31,12 +39,11 @@ public class CakeCell: UITableViewCell {
         return iv
     }()
 
-    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         setupViews()
         selectionStyle = .none
-        backgroundColor = UIColor(red: 248/255, green: 216/255, blue: 158/255, alpha: 1.0)
     }
 
     required init?(coder: NSCoder) {
@@ -49,30 +56,50 @@ public class CakeCell: UITableViewCell {
     }
 
     private func buildViewHierarchy() {
-        addSubview(cakeImageView)
-        addSubview(titleLabel)
-        addSubview(descriptionLabel)
+        contentView.addSubview(cellBackgroundView)
+        cellBackgroundView.addSubview(cakeImageView)
+        cellBackgroundView.addSubview(titleLabel)
+        cellBackgroundView.addSubview(descriptionLabel)
     }
 
     private func setupConstraints() {
-        cakeImageView.anchor(top: self.topAnchor,
-                               leading: nil,
-                               bottom: nil,
-                               trailing: self.trailingAnchor,
-                               padding: UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 20),
-                               size: CGSize(width: 160, height: 160))
+        cellBackgroundView.anchor(top: topAnchor,
+                                  leading: leadingAnchor,
+                                  bottom: bottomAnchor,
+                                  trailing: trailingAnchor,
+                                  padding: UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20))
 
+        cakeImageView.anchor(top: cellBackgroundView.topAnchor,
+                             leading: nil,
+                             bottom: nil,
+                             trailing: cellBackgroundView.trailingAnchor,
+                             padding: UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 20),
+                             size: CGSize(width: 160, height: 160))
 
-        titleLabel.anchor(top: self.topAnchor,
-                          leading: self.leadingAnchor,
-                         bottom: nil,
-                         trailing: cakeImageView.trailingAnchor,
-                         padding: UIEdgeInsets(top: 30, left: 20, bottom: 0, right: 0))
+        titleLabel.anchor(top: cellBackgroundView.topAnchor,
+                          leading: cellBackgroundView.leadingAnchor,
+                          bottom: nil,
+                          trailing: cakeImageView.leadingAnchor,
+                          padding: UIEdgeInsets(top: 30, left: 20, bottom: 0, right: 10))
 
         descriptionLabel.anchor(top: cakeImageView.bottomAnchor,
-                                leading: self.leadingAnchor,
-                                bottom: self.bottomAnchor,
-                                trailing: self.trailingAnchor,
+                                leading: cellBackgroundView.leadingAnchor,
+                                bottom: cellBackgroundView.bottomAnchor,
+                                trailing: cellBackgroundView.trailingAnchor,
                                 padding: UIEdgeInsets(top: 0, left: 20, bottom: 20, right: 20))
+    }
+
+    public func setBackgroundColor(for index: IndexPath) {
+        let row = index.row
+        let color: UIColor
+
+        if row.isMultiple(of: 2) {
+            color = Constant.Color.blue
+        } else if row.isMultiple(of: 3) {
+            color = Constant.Color.yellow
+        } else {
+            color = Constant.Color.pink
+        }
+        cellBackgroundView.backgroundColor = color
     }
 }

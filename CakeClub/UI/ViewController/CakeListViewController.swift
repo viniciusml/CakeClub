@@ -27,6 +27,7 @@ public class CakeListViewController: UITableViewController {
         title = "Would you have some cake?"
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = .none
         tableView.register(CakeCell.self)
 
         bind(tableView, to: viewModel)
@@ -50,7 +51,8 @@ public class CakeListViewController: UITableViewController {
 
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellModel = viewModel?.cakeList[indexPath.row]
-        guard let cell = dequeueCakeCell(tableView, with: cellModel) else { return UITableViewCell() }
+        guard let cell = configureCakeCell(tableView, with: cellModel) else { return UITableViewCell() }
+        cell.setBackgroundColor(for: indexPath)
         return cell
     }
 
@@ -62,7 +64,7 @@ public class CakeListViewController: UITableViewController {
         cell.fadeIn(at: indexPath)
     }
 
-    private func dequeueCakeCell(_ tableView: UITableView, with item: CakeItem?) -> CakeCell? {
+    private func configureCakeCell(_ tableView: UITableView, with item: CakeItem?) -> CakeCell? {
         guard let cell = tableView.dequeueReusableCell(CakeCell.self),
               let item = item else { return nil }
         cell.titleLabel.text = item.title

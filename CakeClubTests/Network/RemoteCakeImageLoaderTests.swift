@@ -100,5 +100,5 @@ class RemoteCakeImageLoaderTests: XCTestCase {
 - Breakdown VM into two VM's (Cell and Main)
 - Improve UI (a lot).
 - Test cell animation.
-- Test alert presentation.
+[x] Test alert presentation.
 */
