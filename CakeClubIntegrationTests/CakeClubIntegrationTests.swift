@@ -35,7 +35,8 @@ class CakeClubIntegrationTests: XCTestCase {
 
         var expectedImageData: Data?
         view.onImageLoad = { [weak view] in
-            expectedImageData = view?.image?.pngData()
+            let data = view?.image?.pngData()
+            expectedImageData = data
             exp.fulfill()
         }
         loader.loadImage(from: imageURL, into: view)
