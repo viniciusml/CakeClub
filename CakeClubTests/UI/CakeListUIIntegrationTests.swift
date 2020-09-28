@@ -8,6 +8,7 @@
 
 import CakeClub
 import XCTest
+import ViewControllerPresentationSpy
 
 class CakeListUIIntegrationTests: XCTestCase {
     func test_viewDidLoad_showsCorrectTitle() {
@@ -65,6 +66,23 @@ class CakeListUIIntegrationTests: XCTestCase {
         XCTAssertEqual(loader.loadedImageURLs, [cakeImageURL(0), cakeImageURL(1)], "Expected second image URL request once second view also becomes visible")
     }
 
+    func test_loadCakesFailure_displaysErrorAlert() {
+        let (sut, loader) = makeSUT()
+        let alertVerifier = AlertVerifier()
+
+        sut.loadViewIfNeeded()
+        loader.completeListLoading(with: .HTTPClientError)
+
+        alertVerifier.verify(
+            title: "Alert",
+            message: "Something went wrong. Please try again.",
+            animated: true,
+            actions: [
+                .default("OK")],
+            presentingViewController: sut
+        )
+    }
+
     // MARK: - Helpers
 
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: CakeListViewController, loader: RemoteCakeLoaderSpy) {
@@ -120,6 +138,10 @@ class CakeListUIIntegrationTests: XCTestCase {
 
         func completeListLoading(with list: CakeList = [], at index: Int = 0) {
             completions[index](.success(list))
+        }
+
+        func completeListLoading(with error: LoadingError) {
+            completions[0](.failure(error))
         }
 
         // MARK: - Cake Image Loader
