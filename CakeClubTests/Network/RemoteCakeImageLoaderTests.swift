@@ -98,7 +98,7 @@ class RemoteCakeImageLoaderTests: XCTestCase {
 [x] Remove Completion Handler by doing this
 - Draw dependency diagram
 - Breakdown VM into two VM's (Cell and Main)
-- Improve UI (a lot).
+[x] Improve UI (a lot).
 - Test cell animation.
 [x] Test alert presentation.
 */

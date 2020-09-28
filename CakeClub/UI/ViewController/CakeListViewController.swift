@@ -13,7 +13,7 @@ public class CakeListViewController: UITableViewController {
     private var imageLoader: CakeImageLoader?
     private var tableModel = CakeList()
 
-    let cellHeight: CGFloat = 260
+    private let cellHeight: CGFloat = 260
 
     public convenience init(viewModel: CakeViewModel, imageLoader: CakeImageLoader) {
         self.init()
@@ -24,7 +24,7 @@ public class CakeListViewController: UITableViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Would you have some cake?"
+        title = Constant.Text.listControllerTitle
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
@@ -39,7 +39,7 @@ public class CakeListViewController: UITableViewController {
         }
 
         viewModel?.onLoadFailure = { [weak self] in
-            self?.showBasicAlert(title: "Alert", message: "Something went wrong. Please try again.")
+            self?.showBasicAlert(title: Constant.Text.alertTitle, message: Constant.Text.alertMessage)
         }
 
         viewModel?.loadCakes()

@@ -18,4 +18,11 @@ public struct Constant {
         static var yellow: UIColor { UIColor(red: 245/255, green: 212/255, blue: 156/255, alpha: 1.0) }
         static var blue: UIColor { UIColor(red: 142/255, green: 161/255, blue: 221/255, alpha: 1.0) }
     }
+
+    struct Text {
+        static let alertTitle = "Alert"
+        static let alertMessage = "Something went wrong. Please try again."
+        static let alertOKAction = "OK"
+        static let listControllerTitle = "Would you have some cake?"
+    }
 }
