@@ -33,7 +33,7 @@ class CakeListUIIntegrationTests: XCTestCase {
         XCTAssertEqual(loader.loadCallCount, 1)
     }
 
-    func test_loadCakesCompletion_rendersSuccessfullyLoadedList() {
+    func test_loadCakesCompletion_rendersSuccessfullyLoadedAndFormattedList() {
         var itemList = [CakeItem]()
         for n in 0...10 {
             itemList.append(makeCake(n))
@@ -45,7 +45,7 @@ class CakeListUIIntegrationTests: XCTestCase {
         assertThat(sut, isRendering: [])
 
         loader.completeListLoading(with: itemList)
-        assertThat(sut, isRendering: itemList)
+        assertThat(sut, isRendering: itemList.capitalized())
     }
 
     func test_cakeImageView_loadsImageURLWhenVisible() {
@@ -99,7 +99,7 @@ class CakeListUIIntegrationTests: XCTestCase {
         }
 
         list.enumerated().forEach { index, item in
-            assertThat(sut, hasViewConfiguredFor: item, at: index)
+            assertThat(sut, hasViewConfiguredFor: item, at: index, file: file, line: line)
         }
     }
 
@@ -184,5 +184,11 @@ private extension CakeCell {
 
     var imageData: Data? {
         cakeImageView.image?.pngData()
+    }
+}
+
+private extension Array where Element == CakeItem {
+    func capitalized() -> CakeList {
+        self.map { CakeItem(title: $0.title.capitalized, desc: $0.desc.capitalized, image: $0.image) }
     }
 }

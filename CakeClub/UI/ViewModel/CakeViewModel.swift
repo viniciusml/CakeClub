@@ -26,11 +26,17 @@ public class CakeViewModel {
 
             switch result {
             case let .success(cakeList):
-                self.cakeList = cakeList
+                self.cakeList = cakeList.capitalized()
                 self.onLoadSuccess?()
             case .failure:
                 self.onLoadFailure?()
             }
         }
+    }
+}
+
+private extension Array where Element == CakeItem {
+    func capitalized() -> CakeList {
+        self.map { CakeItem(title: $0.title.capitalized, desc: $0.desc.capitalized, image: $0.image) }
     }
 }
