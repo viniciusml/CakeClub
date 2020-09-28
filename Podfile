@@ -17,11 +17,6 @@ target 'CakeClub' do
   target 'CakeClubTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'ViewControllerPresentationSpy', '~> 5.0'
   end
-
-  target 'CI' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
 end

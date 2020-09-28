@@ -3,20 +3,24 @@ PODS:
   - SDWebImage (5.9.1):
     - SDWebImage/Core (= 5.9.1)
   - SDWebImage/Core (5.9.1)
+  - ViewControllerPresentationSpy (5.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
   - SDWebImage (~> 5.0)
+  - ViewControllerPresentationSpy (~> 5.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - SDWebImage
+    - ViewControllerPresentationSpy
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
   SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
+  ViewControllerPresentationSpy: 7cfa8ef8ec9fa197ea58ee6e9ac72bbe5442281b
 
-PODFILE CHECKSUM: fc285ee380b2a5ef32af219744e7207c65888ecc
+PODFILE CHECKSUM: 899e04fd5981652e9e0dee2b0663c2b83560ee12
 
 COCOAPODS: 1.9.3

@@ -347,6 +347,7 @@
 				8F30D6932520DD6C00F542A4 /* Sources */,
 				8F30D6942520DD6C00F542A4 /* Frameworks */,
 				8F30D6952520DD6C00F542A4 /* Resources */,
+				0AAD1A651AD1565452AA2EC1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -448,6 +449,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0AAD1A651AD1565452AA2EC1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CakeClubTests/Pods-CakeClubTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CakeClubTests/Pods-CakeClubTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CakeClubTests/Pods-CakeClubTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		0C8EEA0FAA174329A08579CE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
