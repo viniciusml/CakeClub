@@ -171,6 +171,11 @@ private extension CakeListViewController {
     func simulateCakeViewVisible(at index: Int) -> CakeCell? {
         cakeItem(at: index) as? CakeCell
     }
+
+    func simulateCakeViewNearVisible(view: CakeCell, at row: Int) {
+        let index = IndexPath(row: row, section: cakeItemsSection)
+        tableView(tableView, willDisplay: view, forRowAt: index)
+    }
 }
 
 private extension CakeCell {

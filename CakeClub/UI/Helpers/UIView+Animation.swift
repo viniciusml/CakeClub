@@ -20,6 +20,6 @@ extension UIView {
             animations: {
                 self.transform = CGAffineTransform(translationX: 0, y: 0)
                 self.alpha = 1
-            })
+        })
     }
 }
