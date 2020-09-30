@@ -80,7 +80,11 @@ class CakeClubIntegrationTests: XCTestCase {
 
     class ImageViewSpy: UIImageView {
         override var image: UIImage? {
-            didSet { onImageLoad?() }
+            didSet {
+                if oldValue == nil {
+                    onImageLoad?()
+                }
+            }
         }
 
         var onImageLoad: (() -> Void)?
