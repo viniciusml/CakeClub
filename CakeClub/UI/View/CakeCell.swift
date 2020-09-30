@@ -50,6 +50,12 @@ public class CakeCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+
+        cakeImageView.image = nil
+    }
+
     private func setupViews() {
         buildViewHierarchy()
         setupConstraints()
