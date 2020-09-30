@@ -1,4 +1,5 @@
 # **Cake Club**
+![CI](https://github.com/viniciusml/CakeClub/workflows/CI/badge.svg)
 
 Thank you for taking the time to review my code.
 
