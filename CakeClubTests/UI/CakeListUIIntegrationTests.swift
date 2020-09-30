@@ -66,12 +66,17 @@ class CakeListUIIntegrationTests: XCTestCase {
         XCTAssertEqual(loader.loadedImageURLs, [cakeImageURL(0), cakeImageURL(1)], "Expected second image URL request once second view also becomes visible")
     }
 
-    func test_loadCakesFailure_displaysErrorAlert() {
+    func test_loadCakesFailure_displaysErrorAlertOnMainThread() {
         let (sut, loader) = makeSUT()
         let alertVerifier = AlertVerifier()
 
+        let exp = expectation(description: "Wait for alert presentation")
+        alertVerifier.testCompletion = { exp.fulfill() }
+
         sut.loadViewIfNeeded()
         loader.completeListLoading(with: .HTTPClientError)
+
+        waitForExpectations(timeout: 0.0001)
 
         alertVerifier.verify(
             title: "Alert",

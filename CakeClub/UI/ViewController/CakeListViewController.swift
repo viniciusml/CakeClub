@@ -39,7 +39,9 @@ public class CakeListViewController: UITableViewController {
         }
 
         viewModel?.onLoadFailure = { [weak self] in
-            self?.showBasicAlert(title: Constant.Text.alertTitle, message: Constant.Text.alertMessage)
+            guaranteeMainThread {
+                self?.showBasicAlert(title: Constant.Text.alertTitle, message: Constant.Text.alertMessage)
+            }
         }
 
         viewModel?.loadCakes()
