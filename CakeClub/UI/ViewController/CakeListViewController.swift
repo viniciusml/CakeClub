@@ -34,13 +34,13 @@ public class CakeListViewController: UITableViewController {
     }
 
     private func bind(_ tableView: UITableView, to viewModel: CakeViewModel?) {
-        viewModel?.onLoadSuccess = { [weak self] in
-            self?.tableView.reloadData()
+        viewModel?.onLoadSuccess = strongify(weak: self) { strongSelf in
+            strongSelf.tableView.reloadData()
         }
 
-        viewModel?.onLoadFailure = { [weak self] in
+        viewModel?.onLoadFailure = strongify(weak: self) { strongSelf in
             guaranteeMainThread {
-                self?.showBasicAlert(title: Constant.Text.alertTitle, message: Constant.Text.alertMessage)
+                strongSelf.showBasicAlert(title: Constant.Text.alertTitle, message: Constant.Text.alertMessage)
             }
         }
 

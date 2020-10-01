@@ -39,7 +39,7 @@
 		8F30D6EF252120E800F542A4 /* UITableView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6EE252120E800F542A4 /* UITableView+Helpers.swift */; };
 		8F30D6F12521271A00F542A4 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6F02521271A00F542A4 /* UIViewController+Alert.swift */; };
 		8F30D6F32521286700F542A4 /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6F22521286700F542A4 /* UIView+Animation.swift */; };
-		8F9436472524FC1800DCF192 /* MainThreadDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9436462524FC1800DCF192 /* MainThreadDispatch.swift */; };
+		8F75C6022525CC1B001A7168 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F75C6012525CC1B001A7168 /* HelperFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,7 +101,7 @@
 		8F30D6EE252120E800F542A4 /* UITableView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Helpers.swift"; sourceTree = "<group>"; };
 		8F30D6F02521271A00F542A4 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		8F30D6F22521286700F542A4 /* UIView+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animation.swift"; sourceTree = "<group>"; };
-		8F9436462524FC1800DCF192 /* MainThreadDispatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainThreadDispatch.swift; sourceTree = "<group>"; };
+		8F75C6012525CC1B001A7168 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		ADCBF75706BCA21ADB6DA2AB /* Pods-CakeClubTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CakeClubTests.release.xcconfig"; path = "Target Support Files/Pods-CakeClubTests/Pods-CakeClubTests.release.xcconfig"; sourceTree = "<group>"; };
 		DD6491FBDD3DAE66296E6DC8 /* Pods-CakeClubIntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CakeClubIntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-CakeClubIntegrationTests/Pods-CakeClubIntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -305,7 +305,7 @@
 				8F30D6C82520F6AC00F542A4 /* Constants.swift */,
 				8F30D6EA25211CE100F542A4 /* UIComposer.swift */,
 				8F30D6EC25211EE000F542A4 /* URL+Extension.swift */,
-				8F9436462524FC1800DCF192 /* MainThreadDispatch.swift */,
+				8F75C6012525CC1B001A7168 /* HelperFunctions.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -567,12 +567,12 @@
 				8F30D6F32521286700F542A4 /* UIView+Animation.swift in Sources */,
 				8F30D6EF252120E800F542A4 /* UITableView+Helpers.swift in Sources */,
 				8F30D6DF25211AFA00F542A4 /* CakeCell.swift in Sources */,
-				8F9436472524FC1800DCF192 /* MainThreadDispatch.swift in Sources */,
 				8F30D6E625211C5B00F542A4 /* UIView+NSLayoutAnchor.swift in Sources */,
 				8F30D6EB25211CE100F542A4 /* UIComposer.swift in Sources */,
 				8F30D6F12521271A00F542A4 /* UIViewController+Alert.swift in Sources */,
 				8F30D6B02520EA7200F542A4 /* HTTPClient.swift in Sources */,
 				8F30D6ED25211EE000F542A4 /* URL+Extension.swift in Sources */,
+				8F75C6022525CC1B001A7168 /* HelperFunctions.swift in Sources */,
 				8F30D6AE2520EA4D00F542A4 /* RemoteCakeLoader.swift in Sources */,
 				8F30D6AC2520EA2900F542A4 /* CakeLoader.swift in Sources */,
 				8F30D6B42520F38000F542A4 /* CakeImageLoader.swift in Sources */,

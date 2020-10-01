@@ -21,17 +21,15 @@ public class CakeViewModel {
     }
 
     func loadCakes() {
-        cakeLoader.load { [weak self] result in
-            guard let self = self else { return }
-
+        cakeLoader.load(completion: strongify(weak: self, closure: { strongSelf, result in
             switch result {
             case let .success(cakeList):
-                self.cakeList = cakeList.capitalized()
-                self.onLoadSuccess?()
+                strongSelf.cakeList = cakeList.capitalized()
+                strongSelf.onLoadSuccess?()
             case .failure:
-                self.onLoadFailure?()
+                strongSelf.onLoadFailure?()
             }
-        }
+        }))
     }
 }
 

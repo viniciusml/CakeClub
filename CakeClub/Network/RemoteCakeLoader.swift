@@ -18,15 +18,13 @@ public class RemoteCakeLoader: CakeLoader {
     }
 
     public func load(completion: @escaping (CakeLoader.Result) -> Void) {
-        client.get(from: url) { [weak self] result in
-        guard self != nil else { return }
-
+        client.get(from: url, completion: strongify(weak: self, closure: { _, result in
             switch result {
             case let .success(items):
                 completion(.success(items))
             case .failure:
                 completion(.failure(.HTTPClientError))
             }
-        }
+        }))
     }
 }
