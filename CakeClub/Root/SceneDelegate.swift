@@ -19,9 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let endpointURL = URL(safeString: Constant.endpoint)
         let cakeListController = CakeListUIComposer.composeCakeListControllerWith(loaderURL: endpointURL)
-        let navigationController = UINavigationController(rootViewController: cakeListController)
 
-        window?.rootViewController = navigationController
+        window?.rootViewController = cakeListController
         window?.makeKeyAndVisible()
     }
 }
