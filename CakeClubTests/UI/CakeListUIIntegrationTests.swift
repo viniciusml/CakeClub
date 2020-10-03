@@ -11,12 +11,12 @@ import XCTest
 import ViewControllerPresentationSpy
 
 class CakeListUIIntegrationTests: XCTestCase {
-    func test_viewDidLoad_showsCorrectTitle() {
+    func test_viewDidLoad_showsCorrectTitleInHeader() {
         let (sut, _) = makeSUT()
 
         sut.loadViewIfNeeded()
 
-        XCTAssertEqual(sut.title, "Would you have some cake?")
+        XCTAssertEqual(sut.sceneTitle, "Would you have some cake?")
     }
 
     func test_init_doesNotMakeRequest() {

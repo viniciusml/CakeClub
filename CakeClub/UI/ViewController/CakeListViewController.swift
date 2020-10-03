@@ -8,6 +8,15 @@
 
 import UIKit
 
+public class StretchyTableHeaderView: UIView {
+    public let titleLabel: UILabel = {
+        let lb = UILabel()
+        lb.font = .systemFont(ofSize: 30, weight: .black)
+        lb.textColor = .label
+        return lb
+    }()
+}
+
 public class CakeListViewController: UIViewController {
     private(set) public lazy var tableView = binded(UITableView())
 
@@ -26,10 +35,12 @@ public class CakeListViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = Constant.Text.listControllerTitle
         viewModel?.loadCakes()
-        
+
         view.addSubview(tableView)
+        let headerView = StretchyTableHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 250))
+        headerView.titleLabel.text = Constant.Text.listControllerTitle
+        tableView.tableHeaderView = headerView
     }
 
     private func binded(_ tableView: UITableView) -> UITableView {

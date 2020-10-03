@@ -10,6 +10,10 @@ import CakeClub
 import UIKit
 
 extension CakeListViewController {
+    var sceneTitle: String? {
+        (tableView.tableHeaderView as! StretchyTableHeaderView).titleLabel.text
+    }
+
     func numberOfRenderedCakeItems() -> Int {
         tableView.numberOfRows(inSection: cakeItemsSection)
     }
