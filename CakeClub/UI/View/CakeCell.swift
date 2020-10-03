@@ -59,18 +59,33 @@ public class CakeCell: UITableViewCell {
     }
 
     private func setupViews() {
-        buildViewHierarchy()
-        setupConstraints()
+        setupView()
     }
 
-    private func buildViewHierarchy() {
+    public func setBackgroundColor(for index: IndexPath) {
+        let row = index.row
+        let color: UIColor
+
+        if row.isMultiple(of: 2) {
+            color = Constant.Color.blue
+        } else if row.isMultiple(of: 3) {
+            color = Constant.Color.yellow
+        } else {
+            color = Constant.Color.pink
+        }
+        cellBackgroundView.backgroundColor = color
+    }
+}
+
+extension CakeCell: CodeView {
+    func buildViewHierarchy() {
         contentView.addSubview(cellBackgroundView)
         cellBackgroundView.addSubview(cakeImageView)
         cellBackgroundView.addSubview(titleLabel)
         cellBackgroundView.addSubview(descriptionLabel)
     }
 
-    private func setupConstraints() {
+    func setupConstraints() {
         cellBackgroundView.anchor(top: topAnchor,
                                   leading: leadingAnchor,
                                   bottom: bottomAnchor,
@@ -97,17 +112,4 @@ public class CakeCell: UITableViewCell {
                                 padding: UIEdgeInsets(top: 0, left: 20, bottom: 20, right: 20))
     }
 
-    public func setBackgroundColor(for index: IndexPath) {
-        let row = index.row
-        let color: UIColor
-
-        if row.isMultiple(of: 2) {
-            color = Constant.Color.blue
-        } else if row.isMultiple(of: 3) {
-            color = Constant.Color.yellow
-        } else {
-            color = Constant.Color.pink
-        }
-        cellBackgroundView.backgroundColor = color
-    }
 }

@@ -13,6 +13,7 @@
 		8F2B81CA25289E8900C85B9F /* CakeCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B81C925289E8900C85B9F /* CakeCellTests.swift */; };
 		8F2B81CF25289EB700C85B9F /* CakeCell+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B81CE25289EB700C85B9F /* CakeCell+TestHelpers.swift */; };
 		8F2B81D425289EEB00C85B9F /* CakeListViewController+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B81D325289EEB00C85B9F /* CakeListViewController+TestHelpers.swift */; };
+		8F2B81E12528A48100C85B9F /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B81E02528A48100C85B9F /* CodeView.swift */; };
 		8F30D6852520DD6A00F542A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6842520DD6A00F542A4 /* AppDelegate.swift */; };
 		8F30D6872520DD6A00F542A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6862520DD6A00F542A4 /* SceneDelegate.swift */; };
 		8F30D68E2520DD6C00F542A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F30D68D2520DD6C00F542A4 /* Assets.xcassets */; };
@@ -73,6 +74,7 @@
 		8F2B81C925289E8900C85B9F /* CakeCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CakeCellTests.swift; sourceTree = "<group>"; };
 		8F2B81CE25289EB700C85B9F /* CakeCell+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CakeCell+TestHelpers.swift"; sourceTree = "<group>"; };
 		8F2B81D325289EEB00C85B9F /* CakeListViewController+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CakeListViewController+TestHelpers.swift"; sourceTree = "<group>"; };
+		8F2B81E02528A48100C85B9F /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 		8F30D6812520DD6A00F542A4 /* CakeClub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CakeClub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F30D6842520DD6A00F542A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8F30D6862520DD6A00F542A4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				8F30D6EE252120E800F542A4 /* UITableView+Helpers.swift */,
 				8F30D6F02521271A00F542A4 /* UIViewController+Alert.swift */,
 				8F30D6F22521286700F542A4 /* UIView+Animation.swift */,
+				8F2B81E02528A48100C85B9F /* CodeView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -574,6 +577,7 @@
 				8F30D6A92520E71500F542A4 /* CakeItem.swift in Sources */,
 				8F30D6852520DD6A00F542A4 /* AppDelegate.swift in Sources */,
 				8F30D6F32521286700F542A4 /* UIView+Animation.swift in Sources */,
+				8F2B81E12528A48100C85B9F /* CodeView.swift in Sources */,
 				8F30D6EF252120E800F542A4 /* UITableView+Helpers.swift in Sources */,
 				8F30D6DF25211AFA00F542A4 /* CakeCell.swift in Sources */,
 				8F30D6E625211C5B00F542A4 /* UIView+NSLayoutAnchor.swift in Sources */,
