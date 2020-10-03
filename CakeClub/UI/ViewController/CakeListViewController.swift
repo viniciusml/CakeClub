@@ -18,13 +18,20 @@ public class StretchyTableHeaderView: UIView {
 }
 
 public class CakeListViewController: UIViewController {
+    private var cellHeight: CGFloat { 260 }
+    private var headerHeight: CGFloat { 260 }
+    private var headerWidth: CGFloat { self.view.bounds.width }
+
     private(set) public lazy var tableView = binded(UITableView())
+    private(set) public lazy var headerView: StretchyTableHeaderView = {
+        let headerView = StretchyTableHeaderView(frame: CGRect(x: 0, y: 0, width: headerWidth, height: headerHeight))
+        headerView.titleLabel.text = Constant.Text.listControllerTitle
+        return headerView
+    }()
 
     private var viewModel: CakeViewModel?
     private var imageLoader: CakeImageLoader?
     private var tableModel = CakeList()
-
-    private let cellHeight: CGFloat = 260
 
     public convenience init(viewModel: CakeViewModel, imageLoader: CakeImageLoader) {
         self.init()
@@ -38,9 +45,6 @@ public class CakeListViewController: UIViewController {
         viewModel?.loadCakes()
 
         view.addSubview(tableView)
-        let headerView = StretchyTableHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 250))
-        headerView.titleLabel.text = Constant.Text.listControllerTitle
-        tableView.tableHeaderView = headerView
     }
 
     private func binded(_ tableView: UITableView) -> UITableView {
@@ -62,6 +66,7 @@ public class CakeListViewController: UIViewController {
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.register(CakeCell.self)
+        tableView.tableHeaderView = headerView
     }
 }
 
