@@ -7,9 +7,9 @@ To run the code, simply unzip it and open in Xcode. There are 3 schemes in the p
 - CakeClubIntegrationTests: where it's possible to run the integration tests for the Network module.
 - CI: where it's possible to run all the tests.
 
-<div>
-<img src="demo.gif" width=300 />
-</div>
+<p align="center">
+  <img src="demo.gif" width=300 />
+</p>
 
 ## **Goal**
 
