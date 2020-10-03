@@ -8,15 +8,6 @@
 
 import UIKit
 
-public class StretchyTableHeaderView: UIView {
-    public let titleLabel: UILabel = {
-        let lb = UILabel()
-        lb.font = .systemFont(ofSize: 30, weight: .black)
-        lb.textColor = .label
-        return lb
-    }()
-}
-
 public class CakeListViewController: UIViewController {
     private var cellHeight: CGFloat { 260 }
     private var headerHeight: CGFloat { 260 }
@@ -24,7 +15,7 @@ public class CakeListViewController: UIViewController {
 
     private(set) public lazy var tableView = binded(UITableView())
     private(set) public lazy var headerView: StretchyTableHeaderView = {
-        let headerView = StretchyTableHeaderView(frame: CGRect(x: 0, y: 0, width: headerWidth, height: headerHeight))
+        let headerView = StretchyTableHeaderView(width: headerWidth, height: headerHeight)
         headerView.titleLabel.text = Constant.Text.listControllerTitle
         return headerView
     }()

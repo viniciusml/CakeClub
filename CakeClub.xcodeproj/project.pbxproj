@@ -14,6 +14,7 @@
 		8F2B81CF25289EB700C85B9F /* CakeCell+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B81CE25289EB700C85B9F /* CakeCell+TestHelpers.swift */; };
 		8F2B81D425289EEB00C85B9F /* CakeListViewController+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B81D325289EEB00C85B9F /* CakeListViewController+TestHelpers.swift */; };
 		8F2B81E12528A48100C85B9F /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B81E02528A48100C85B9F /* CodeView.swift */; };
+		8F2B81E62528A51500C85B9F /* StretchyTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B81E52528A51500C85B9F /* StretchyTableHeaderView.swift */; };
 		8F30D6852520DD6A00F542A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6842520DD6A00F542A4 /* AppDelegate.swift */; };
 		8F30D6872520DD6A00F542A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6862520DD6A00F542A4 /* SceneDelegate.swift */; };
 		8F30D68E2520DD6C00F542A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F30D68D2520DD6C00F542A4 /* Assets.xcassets */; };
@@ -75,6 +76,7 @@
 		8F2B81CE25289EB700C85B9F /* CakeCell+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CakeCell+TestHelpers.swift"; sourceTree = "<group>"; };
 		8F2B81D325289EEB00C85B9F /* CakeListViewController+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CakeListViewController+TestHelpers.swift"; sourceTree = "<group>"; };
 		8F2B81E02528A48100C85B9F /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
+		8F2B81E52528A51500C85B9F /* StretchyTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchyTableHeaderView.swift; sourceTree = "<group>"; };
 		8F30D6812520DD6A00F542A4 /* CakeClub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CakeClub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F30D6842520DD6A00F542A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8F30D6862520DD6A00F542A4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				8F30D6DE25211AFA00F542A4 /* CakeCell.swift */,
+				8F2B81E52528A51500C85B9F /* StretchyTableHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F2B81E62528A51500C85B9F /* StretchyTableHeaderView.swift in Sources */,
 				8F30D6B62520F3A200F542A4 /* RemoteCakeImageLoader.swift in Sources */,
 				8F30D6CB2520F8E600F542A4 /* AFHTTPClient.swift in Sources */,
 				8F30D6E125211B2000F542A4 /* CakeViewModel.swift in Sources */,
