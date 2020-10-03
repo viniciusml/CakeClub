@@ -10,7 +10,7 @@ import UIKit
 
 public class CakeListViewController: UIViewController {
     private var cellHeight: CGFloat { 260 }
-    private var headerHeight: CGFloat { 260 }
+    private var headerHeight: CGFloat { 180 }
     private var headerWidth: CGFloat { self.view.bounds.width }
 
     private(set) public lazy var tableView = binded(UITableView())
@@ -36,6 +36,7 @@ public class CakeListViewController: UIViewController {
         viewModel?.loadCakes()
 
         view.addSubview(tableView)
+        tableView.fillSuperview()
     }
 
     private func binded(_ tableView: UITableView) -> UITableView {
@@ -88,5 +89,12 @@ extension CakeListViewController: UITableViewDataSource, UITableViewDelegate {
         cell.descriptionLabel.text = item.desc
         imageLoader?.loadImage(from: item.image, into: cell.cakeImageView)
         return cell
+    }
+}
+
+extension CakeListViewController: UIScrollViewDelegate {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let headerView = self.tableView.tableHeaderView as? StretchyTableHeaderView else { return }
+        headerView.scrollViewDidScroll(scrollView: scrollView)
     }
 }
