@@ -8,7 +8,9 @@
 
 import UIKit
 
-public class CakeListViewController: UITableViewController {
+public class CakeListViewController: UIViewController {
+    private(set) public lazy var tableView = binded(UITableView())
+
     private var viewModel: CakeViewModel?
     private var imageLoader: CakeImageLoader?
     private var tableModel = CakeList()
@@ -25,17 +27,15 @@ public class CakeListViewController: UITableViewController {
         super.viewDidLoad()
 
         title = Constant.Text.listControllerTitle
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.separatorStyle = .none
-        tableView.register(CakeCell.self)
-
-        bind(tableView, to: viewModel)
+        viewModel?.loadCakes()
+        
+        view.addSubview(tableView)
     }
 
-    private func bind(_ tableView: UITableView, to viewModel: CakeViewModel?) {
-        viewModel?.onLoadSuccess = strongify(weak: self) { strongSelf in
-            strongSelf.tableView.reloadData()
+    private func binded(_ tableView: UITableView) -> UITableView {
+        configure(tableView)
+        viewModel?.onLoadSuccess = strongify(weak: tableView) { strongTableView in
+            strongTableView.reloadData()
         }
 
         viewModel?.onLoadFailure = strongify(weak: self) { strongSelf in
@@ -43,26 +43,34 @@ public class CakeListViewController: UITableViewController {
                 strongSelf.showBasicAlert(title: Constant.Text.alertTitle, message: Constant.Text.alertMessage)
             }
         }
-
-        viewModel?.loadCakes()
+        return tableView
     }
 
-    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    private func configure(_ tableView: UITableView) {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = .none
+        tableView.register(CakeCell.self)
+    }
+}
+
+extension CakeListViewController: UITableViewDataSource, UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel?.cakeList.count ?? 0
     }
 
-    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellModel = viewModel?.cakeList[indexPath.row]
         guard let cell = configureCakeCell(tableView, with: cellModel) else { return UITableViewCell() }
         cell.setBackgroundColor(for: indexPath)
         return cell
     }
 
-    public override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         cellHeight
     }
 
-    public override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.fadeIn(at: indexPath)
     }
 

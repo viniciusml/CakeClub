@@ -10,29 +10,6 @@ import CakeClub
 import XCTest
 import ViewControllerPresentationSpy
 
-class CakeCellTests: XCTestCase {
-    func test_init_doesNotRenderCakeInformation() {
-        let sut = CakeCell()
-
-        XCTAssertNil(sut.cakeTitle)
-        XCTAssertNil(sut.cakeDescription)
-        XCTAssertNil(sut.cakeImage)
-    }
-
-    func test_prepareForReuse_resetsContent() {
-        let sut = CakeCell()
-        sut.descriptionLabel.text = "Any description"
-        sut.titleLabel.text = "Any title"
-        sut.cakeImageView.image = UIImage.make(withColor: .red)
-
-        sut.prepareForReuse()
-
-        XCTAssertNil(sut.cakeTitle)
-        XCTAssertNil(sut.cakeDescription)
-        XCTAssertNil(sut.cakeImage)
-    }
-}
-
 class CakeListUIIntegrationTests: XCTestCase {
     func test_viewDidLoad_showsCorrectTitle() {
         let (sut, _) = makeSUT()
@@ -179,39 +156,6 @@ class CakeListUIIntegrationTests: XCTestCase {
         func loadImage(from url: URL, into view: UIImageView) {
             loadedImageURLs.append(url)
         }
-    }
-}
-
-private extension CakeListViewController {
-    func numberOfRenderedCakeItems() -> Int {
-        tableView.numberOfRows(inSection: cakeItemsSection)
-    }
-
-    private var cakeItemsSection: Int { 0 }
-
-    func cakeItem(at row: Int) -> UITableViewCell? {
-        let ds = tableView.dataSource
-        let index = IndexPath(item: row, section: cakeItemsSection)
-        return ds?.tableView(tableView, cellForRowAt: index)
-    }
-
-    @discardableResult
-    func simulateCakeViewVisible(at index: Int) -> CakeCell? {
-        cakeItem(at: index) as? CakeCell
-    }
-}
-
-private extension CakeCell {
-    var cakeTitle: String? {
-        titleLabel.text
-    }
-
-    var cakeDescription: String? {
-        descriptionLabel.text
-    }
-
-    var cakeImage: UIImage? {
-        cakeImageView.image
     }
 }
 
