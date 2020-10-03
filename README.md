@@ -1,13 +1,15 @@
 # **Cake Club**
 ![CI](https://github.com/viniciusml/CakeClub/workflows/CI/badge.svg)
 
-Thank you for taking the time to review my code.
-
-To run the code, simply unzip it and open in Xcode. It was developed using Xcode 11.7. There are 3 schemes in the project:
+To run the code, simply unzip it and open in Xcode. There are 3 schemes in the project:
 
 - CakeClub: where it's possible to run the unit tests for the app.
 - CakeClubIntegrationTests: where it's possible to run the integration tests for the Network module.
 - CI: where it's possible to run all the tests.
+
+<div>
+<img src="demo.gif" width=300 />
+</div>
 
 ## **Goal**
 
