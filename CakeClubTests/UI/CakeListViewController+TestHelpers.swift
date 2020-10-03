@@ -14,6 +14,10 @@ extension CakeListViewController {
         (tableView.tableHeaderView as! StretchyTableHeaderView).titleLabel.text
     }
 
+    var initialHeaderViewHeight: CGFloat {
+        (tableView.tableHeaderView as! StretchyTableHeaderView).containerViewHeight.constant
+    }
+
     func numberOfRenderedCakeItems() -> Int {
         tableView.numberOfRows(inSection: cakeItemsSection)
     }

@@ -17,15 +17,26 @@ public class StretchyTableHeaderView: UIView {
 
     public let titleLabel: UILabel = {
         let lb = UILabel()
-        lb.font = .systemFont(ofSize: 40, weight: .medium)
+        lb.font = .systemFont(ofSize: 20, weight: .medium)
         lb.textColor = .label
-        lb.numberOfLines = 0
+        lb.textAlignment = .center
+        lb.numberOfLines = 1
         return lb
     }()
 
-    private var containerViewHeight = NSLayoutConstraint()
-    private var titleLabelHeight = NSLayoutConstraint()
-    private var titleLabelBottom = NSLayoutConstraint()
+    public let imageView: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "cake-header")
+        iv.contentMode = .scaleAspectFill
+        iv.clipsToBounds = true
+        iv.layer.cornerRadius = 10.0
+        iv.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        return iv
+    }()
+
+    private(set) public var containerViewHeight = NSLayoutConstraint()
+    private var imageViewHeight = NSLayoutConstraint()
+    private var imageViewBottom = NSLayoutConstraint()
 
     convenience init(width: CGFloat, height: CGFloat) {
         self.init(frame: CGRect(x: 0, y: 0, width: width, height: height))
@@ -37,14 +48,15 @@ public class StretchyTableHeaderView: UIView {
         containerViewHeight.constant = scrollView.contentInset.top
         let offsetY = -(scrollView.contentOffset.y + scrollView.contentInset.top)
         containerView.clipsToBounds = offsetY <= 0
-        titleLabelBottom.constant = offsetY >= 0 ? 0 : -offsetY / 2
-        titleLabelHeight.constant = max(offsetY + scrollView.contentInset.top, scrollView.contentInset.top)
+        imageViewBottom.constant = offsetY >= 0 ? 0 : -offsetY / 2
+        imageViewHeight.constant = max(offsetY + scrollView.contentInset.top, scrollView.contentInset.top)
     }
 }
 
 extension StretchyTableHeaderView: CodeView {
     func buildViewHierarchy() {
         addSubview(containerView)
+        containerView.addSubview(imageView)
         containerView.addSubview(titleLabel)
     }
 
@@ -61,11 +73,20 @@ extension StretchyTableHeaderView: CodeView {
         containerViewHeight = containerView.heightAnchor.constraint(equalTo: heightAnchor)
         containerViewHeight.isActive = true
 
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabelBottom = titleLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
-        titleLabelBottom.isActive = true
-        titleLabelHeight = titleLabel.heightAnchor.constraint(equalTo: containerView.heightAnchor)
-        titleLabelHeight.isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20).isActive = true
+        titleLabel.anchor(top: containerView.topAnchor,
+                          leading: self.leadingAnchor,
+                          bottom: nil,
+                          trailing: self.trailingAnchor,
+                          padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0),
+                          size: CGSize(width: 0, height: 60))
+
+
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageViewBottom = imageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+        imageViewBottom.isActive = true
+        imageViewHeight = imageView.heightAnchor.constraint(equalTo: containerView.heightAnchor)
+        imageViewHeight.isActive = true
+        imageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+        imageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
     }
 }

@@ -19,7 +19,7 @@ public class CakeCell: UITableViewCell {
         let lb = UILabel()
         lb.font = .systemFont(ofSize: 22, weight: .black)
         lb.textColor = .white
-        lb.numberOfLines = 2
+        lb.numberOfLines = 0
         return lb
     }()
 
