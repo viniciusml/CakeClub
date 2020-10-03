@@ -54,6 +54,8 @@ public class CakeCell: UITableViewCell {
         super.prepareForReuse()
 
         cakeImageView.image = nil
+        titleLabel.text = nil
+        descriptionLabel.text = nil
     }
 
     private func setupViews() {

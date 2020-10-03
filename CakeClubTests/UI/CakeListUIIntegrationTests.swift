@@ -10,6 +10,29 @@ import CakeClub
 import XCTest
 import ViewControllerPresentationSpy
 
+class CakeCellTests: XCTestCase {
+    func test_init_doesNotRenderCakeInformation() {
+        let sut = CakeCell()
+
+        XCTAssertNil(sut.cakeTitle)
+        XCTAssertNil(sut.cakeDescription)
+        XCTAssertNil(sut.cakeImage)
+    }
+
+    func test_prepareForReuse_resetsContent() {
+        let sut = CakeCell()
+        sut.descriptionLabel.text = "Any description"
+        sut.titleLabel.text = "Any title"
+        sut.cakeImageView.image = UIImage.make(withColor: .red)
+
+        sut.prepareForReuse()
+
+        XCTAssertNil(sut.cakeTitle)
+        XCTAssertNil(sut.cakeDescription)
+        XCTAssertNil(sut.cakeImage)
+    }
+}
+
 class CakeListUIIntegrationTests: XCTestCase {
     func test_viewDidLoad_showsCorrectTitle() {
         let (sut, _) = makeSUT()
@@ -176,11 +199,6 @@ private extension CakeListViewController {
     func simulateCakeViewVisible(at index: Int) -> CakeCell? {
         cakeItem(at: index) as? CakeCell
     }
-
-    func simulateCakeViewNearVisible(view: CakeCell, at row: Int) {
-        let index = IndexPath(row: row, section: cakeItemsSection)
-        tableView(tableView, willDisplay: view, forRowAt: index)
-    }
 }
 
 private extension CakeCell {
@@ -192,8 +210,8 @@ private extension CakeCell {
         descriptionLabel.text
     }
 
-    var imageData: Data? {
-        cakeImageView.image?.pngData()
+    var cakeImage: UIImage? {
+        cakeImageView.image
     }
 }
 
