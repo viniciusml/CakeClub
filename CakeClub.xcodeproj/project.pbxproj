@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -45,6 +45,9 @@
 		8F30D6F12521271A00F542A4 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6F02521271A00F542A4 /* UIViewController+Alert.swift */; };
 		8F30D6F32521286700F542A4 /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6F22521286700F542A4 /* UIView+Animation.swift */; };
 		8F75C6022525CC1B001A7168 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F75C6012525CC1B001A7168 /* HelperFunctions.swift */; };
+		EC71F0B32944B523000A86C7 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = EC71F0B22944B523000A86C7 /* SDWebImage */; };
+		EC71F0B62944B575000A86C7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = EC71F0B52944B575000A86C7 /* Alamofire */; };
+		EC71F0B92944B5B6000A86C7 /* ViewControllerPresentationSpy in Frameworks */ = {isa = PBXBuildFile; productRef = EC71F0B82944B5B6000A86C7 /* ViewControllerPresentationSpy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +124,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC71F0B62944B575000A86C7 /* Alamofire in Frameworks */,
+				EC71F0B32944B523000A86C7 /* SDWebImage in Frameworks */,
 				6C6BCA9360F328B69E38D33A /* Pods_CakeClub.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -129,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC71F0B92944B5B6000A86C7 /* ViewControllerPresentationSpy in Frameworks */,
 				56625D2DFBB1F4670A465D23 /* Pods_CakeClubTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,6 +359,10 @@
 			dependencies = (
 			);
 			name = CakeClub;
+			packageProductDependencies = (
+				EC71F0B22944B523000A86C7 /* SDWebImage */,
+				EC71F0B52944B575000A86C7 /* Alamofire */,
+			);
 			productName = CakeClub;
 			productReference = 8F30D6812520DD6A00F542A4 /* CakeClub.app */;
 			productType = "com.apple.product-type.application";
@@ -373,6 +383,9 @@
 				8F30D6992520DD6C00F542A4 /* PBXTargetDependency */,
 			);
 			name = CakeClubTests;
+			packageProductDependencies = (
+				EC71F0B82944B5B6000A86C7 /* ViewControllerPresentationSpy */,
+			);
 			productName = CakeClubTests;
 			productReference = 8F30D6972520DD6C00F542A4 /* CakeClubTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -429,6 +442,11 @@
 				Base,
 			);
 			mainGroup = 8F30D6782520DD6A00F542A4;
+			packageReferences = (
+				EC71F0B12944B523000A86C7 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				EC71F0B42944B575000A86C7 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				EC71F0B72944B5B6000A86C7 /* XCRemoteSwiftPackageReference "ViewControllerPresentationSpy" */,
+			);
 			productRefGroup = 8F30D6822520DD6A00F542A4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -938,6 +956,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EC71F0B12944B523000A86C7 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.14.2;
+			};
+		};
+		EC71F0B42944B575000A86C7 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:Alamofire/Alamofire.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.6.4;
+			};
+		};
+		EC71F0B72944B5B6000A86C7 /* XCRemoteSwiftPackageReference "ViewControllerPresentationSpy" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:jonreid/ViewControllerPresentationSpy.git";
+			requirement = {
+				kind = exactVersion;
+				version = 6.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EC71F0B22944B523000A86C7 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC71F0B12944B523000A86C7 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		EC71F0B52944B575000A86C7 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC71F0B42944B575000A86C7 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		EC71F0B82944B5B6000A86C7 /* ViewControllerPresentationSpy */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC71F0B72944B5B6000A86C7 /* XCRemoteSwiftPackageReference "ViewControllerPresentationSpy" */;
+			productName = ViewControllerPresentationSpy;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8F30D6792520DD6A00F542A4 /* Project object */;
 }
