@@ -3,13 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		31387215337196F7661A1465 /* Pods_CakeClubIntegrationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4956A85086AA5D8E8C350339 /* Pods_CakeClubIntegrationTests.framework */; };
-		56625D2DFBB1F4670A465D23 /* Pods_CakeClubTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09EE844B0D2589FFEDC8B55D /* Pods_CakeClubTests.framework */; };
-		6C6BCA9360F328B69E38D33A /* Pods_CakeClub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 653382E05143AB8ED51897D5 /* Pods_CakeClub.framework */; };
 		8F2B81CA25289E8900C85B9F /* CakeCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B81C925289E8900C85B9F /* CakeCellTests.swift */; };
 		8F2B81CF25289EB700C85B9F /* CakeCell+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B81CE25289EB700C85B9F /* CakeCell+TestHelpers.swift */; };
 		8F2B81D425289EEB00C85B9F /* CakeListViewController+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2B81D325289EEB00C85B9F /* CakeListViewController+TestHelpers.swift */; };
@@ -45,6 +42,9 @@
 		8F30D6F12521271A00F542A4 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6F02521271A00F542A4 /* UIViewController+Alert.swift */; };
 		8F30D6F32521286700F542A4 /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6F22521286700F542A4 /* UIView+Animation.swift */; };
 		8F75C6022525CC1B001A7168 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F75C6012525CC1B001A7168 /* HelperFunctions.swift */; };
+		EC71F0B32944B523000A86C7 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = EC71F0B22944B523000A86C7 /* SDWebImage */; };
+		EC71F0B62944B575000A86C7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = EC71F0B52944B575000A86C7 /* Alamofire */; };
+		EC71F0B92944B5B6000A86C7 /* ViewControllerPresentationSpy in Frameworks */ = {isa = PBXBuildFile; productRef = EC71F0B82944B5B6000A86C7 /* ViewControllerPresentationSpy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,13 +65,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		02B7731E16ED41C6C12EFA90 /* Pods-CakeClubTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CakeClubTests.debug.xcconfig"; path = "Target Support Files/Pods-CakeClubTests/Pods-CakeClubTests.debug.xcconfig"; sourceTree = "<group>"; };
-		09EE844B0D2589FFEDC8B55D /* Pods_CakeClubTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CakeClubTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0D3AFCA96658D2440005F3B4 /* Pods-CakeClub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CakeClub.release.xcconfig"; path = "Target Support Files/Pods-CakeClub/Pods-CakeClub.release.xcconfig"; sourceTree = "<group>"; };
-		1793B88CD4877A2DB10D97AA /* Pods-CakeClub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CakeClub.debug.xcconfig"; path = "Target Support Files/Pods-CakeClub/Pods-CakeClub.debug.xcconfig"; sourceTree = "<group>"; };
-		4956A85086AA5D8E8C350339 /* Pods_CakeClubIntegrationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CakeClubIntegrationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		653382E05143AB8ED51897D5 /* Pods_CakeClub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CakeClub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		87BF9E4B6394556FBFA3CFB5 /* Pods-CakeClubIntegrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CakeClubIntegrationTests.debug.xcconfig"; path = "Target Support Files/Pods-CakeClubIntegrationTests/Pods-CakeClubIntegrationTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8F2B81C925289E8900C85B9F /* CakeCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CakeCellTests.swift; sourceTree = "<group>"; };
 		8F2B81CE25289EB700C85B9F /* CakeCell+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CakeCell+TestHelpers.swift"; sourceTree = "<group>"; };
 		8F2B81D325289EEB00C85B9F /* CakeListViewController+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CakeListViewController+TestHelpers.swift"; sourceTree = "<group>"; };
@@ -112,8 +105,6 @@
 		8F30D6F02521271A00F542A4 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		8F30D6F22521286700F542A4 /* UIView+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animation.swift"; sourceTree = "<group>"; };
 		8F75C6012525CC1B001A7168 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
-		ADCBF75706BCA21ADB6DA2AB /* Pods-CakeClubTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CakeClubTests.release.xcconfig"; path = "Target Support Files/Pods-CakeClubTests/Pods-CakeClubTests.release.xcconfig"; sourceTree = "<group>"; };
-		DD6491FBDD3DAE66296E6DC8 /* Pods-CakeClubIntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CakeClubIntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-CakeClubIntegrationTests/Pods-CakeClubIntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +112,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C6BCA9360F328B69E38D33A /* Pods_CakeClub.framework in Frameworks */,
+				EC71F0B62944B575000A86C7 /* Alamofire in Frameworks */,
+				EC71F0B32944B523000A86C7 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,7 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56625D2DFBB1F4670A465D23 /* Pods_CakeClubTests.framework in Frameworks */,
+				EC71F0B92944B5B6000A86C7 /* ViewControllerPresentationSpy in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,26 +129,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31387215337196F7661A1465 /* Pods_CakeClubIntegrationTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		05F0D0F4AE9D11B2285B3F0F /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				1793B88CD4877A2DB10D97AA /* Pods-CakeClub.debug.xcconfig */,
-				0D3AFCA96658D2440005F3B4 /* Pods-CakeClub.release.xcconfig */,
-				87BF9E4B6394556FBFA3CFB5 /* Pods-CakeClubIntegrationTests.debug.xcconfig */,
-				DD6491FBDD3DAE66296E6DC8 /* Pods-CakeClubIntegrationTests.release.xcconfig */,
-				02B7731E16ED41C6C12EFA90 /* Pods-CakeClubTests.debug.xcconfig */,
-				ADCBF75706BCA21ADB6DA2AB /* Pods-CakeClubTests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		8F30D6782520DD6A00F542A4 = {
 			isa = PBXGroup;
 			children = (
@@ -164,8 +142,6 @@
 				8F30D69A2520DD6C00F542A4 /* CakeClubTests */,
 				8F30D6BF2520F4C900F542A4 /* CakeClubIntegrationTests */,
 				8F30D6822520DD6A00F542A4 /* Products */,
-				05F0D0F4AE9D11B2285B3F0F /* Pods */,
-				CB8901B6C0348B68AFF93997 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -325,16 +301,6 @@
 			path = Root;
 			sourceTree = "<group>";
 		};
-		CB8901B6C0348B68AFF93997 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				653382E05143AB8ED51897D5 /* Pods_CakeClub.framework */,
-				4956A85086AA5D8E8C350339 /* Pods_CakeClubIntegrationTests.framework */,
-				09EE844B0D2589FFEDC8B55D /* Pods_CakeClubTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -342,17 +308,19 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8F30D6A02520DD6C00F542A4 /* Build configuration list for PBXNativeTarget "CakeClub" */;
 			buildPhases = (
-				28FBD3FC50B6DFB3AD0C079D /* [CP] Check Pods Manifest.lock */,
 				8F30D67D2520DD6A00F542A4 /* Sources */,
 				8F30D67E2520DD6A00F542A4 /* Frameworks */,
 				8F30D67F2520DD6A00F542A4 /* Resources */,
-				62D0C59FC3CCBD15FCD01EF7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = CakeClub;
+			packageProductDependencies = (
+				EC71F0B22944B523000A86C7 /* SDWebImage */,
+				EC71F0B52944B575000A86C7 /* Alamofire */,
+			);
 			productName = CakeClub;
 			productReference = 8F30D6812520DD6A00F542A4 /* CakeClub.app */;
 			productType = "com.apple.product-type.application";
@@ -361,11 +329,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8F30D6A32520DD6C00F542A4 /* Build configuration list for PBXNativeTarget "CakeClubTests" */;
 			buildPhases = (
-				2A3DC81823B80DE7A2EA80D2 /* [CP] Check Pods Manifest.lock */,
 				8F30D6932520DD6C00F542A4 /* Sources */,
 				8F30D6942520DD6C00F542A4 /* Frameworks */,
 				8F30D6952520DD6C00F542A4 /* Resources */,
-				0AAD1A651AD1565452AA2EC1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -373,6 +339,9 @@
 				8F30D6992520DD6C00F542A4 /* PBXTargetDependency */,
 			);
 			name = CakeClubTests;
+			packageProductDependencies = (
+				EC71F0B82944B5B6000A86C7 /* ViewControllerPresentationSpy */,
+			);
 			productName = CakeClubTests;
 			productReference = 8F30D6972520DD6C00F542A4 /* CakeClubTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -381,7 +350,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8F30D6C72520F4C900F542A4 /* Build configuration list for PBXNativeTarget "CakeClubIntegrationTests" */;
 			buildPhases = (
-				0C8EEA0FAA174329A08579CE /* [CP] Check Pods Manifest.lock */,
 				8F30D6BA2520F4C900F542A4 /* Sources */,
 				8F30D6BB2520F4C900F542A4 /* Frameworks */,
 				8F30D6BC2520F4C900F542A4 /* Resources */,
@@ -429,6 +397,11 @@
 				Base,
 			);
 			mainGroup = 8F30D6782520DD6A00F542A4;
+			packageReferences = (
+				EC71F0B12944B523000A86C7 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				EC71F0B42944B575000A86C7 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				EC71F0B72944B5B6000A86C7 /* XCRemoteSwiftPackageReference "ViewControllerPresentationSpy" */,
+			);
 			productRefGroup = 8F30D6822520DD6A00F542A4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -465,109 +438,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		0AAD1A651AD1565452AA2EC1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CakeClubTests/Pods-CakeClubTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CakeClubTests/Pods-CakeClubTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CakeClubTests/Pods-CakeClubTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		0C8EEA0FAA174329A08579CE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CakeClubIntegrationTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		28FBD3FC50B6DFB3AD0C079D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CakeClub-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2A3DC81823B80DE7A2EA80D2 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CakeClubTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		62D0C59FC3CCBD15FCD01EF7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CakeClub/Pods-CakeClub-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CakeClub/Pods-CakeClub-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CakeClub/Pods-CakeClub-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8F30D67D2520DD6A00F542A4 /* Sources */ = {
@@ -769,7 +639,6 @@
 		};
 		8F30D6A12520DD6C00F542A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1793B88CD4877A2DB10D97AA /* Pods-CakeClub.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -788,7 +657,6 @@
 		};
 		8F30D6A22520DD6C00F542A4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0D3AFCA96658D2440005F3B4 /* Pods-CakeClub.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -807,7 +675,6 @@
 		};
 		8F30D6A42520DD6C00F542A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 02B7731E16ED41C6C12EFA90 /* Pods-CakeClubTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -832,7 +699,6 @@
 		};
 		8F30D6A52520DD6C00F542A4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ADCBF75706BCA21ADB6DA2AB /* Pods-CakeClubTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -856,7 +722,6 @@
 		};
 		8F30D6C52520F4C900F542A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 87BF9E4B6394556FBFA3CFB5 /* Pods-CakeClubIntegrationTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -878,7 +743,6 @@
 		};
 		8F30D6C62520F4C900F542A4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DD6491FBDD3DAE66296E6DC8 /* Pods-CakeClubIntegrationTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -938,6 +802,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EC71F0B12944B523000A86C7 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.14.2;
+			};
+		};
+		EC71F0B42944B575000A86C7 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:Alamofire/Alamofire.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.6.4;
+			};
+		};
+		EC71F0B72944B5B6000A86C7 /* XCRemoteSwiftPackageReference "ViewControllerPresentationSpy" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:jonreid/ViewControllerPresentationSpy.git";
+			requirement = {
+				kind = exactVersion;
+				version = 6.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EC71F0B22944B523000A86C7 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC71F0B12944B523000A86C7 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		EC71F0B52944B575000A86C7 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC71F0B42944B575000A86C7 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		EC71F0B82944B5B6000A86C7 /* ViewControllerPresentationSpy */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC71F0B72944B5B6000A86C7 /* XCRemoteSwiftPackageReference "ViewControllerPresentationSpy" */;
+			productName = ViewControllerPresentationSpy;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8F30D6792520DD6A00F542A4 /* Project object */;
 }
