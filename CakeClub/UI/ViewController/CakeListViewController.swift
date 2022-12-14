@@ -22,6 +22,7 @@ public class CakeListViewController: UIViewController {
 
     private let viewModel: CakeViewModel
     private let imageLoader: CakeImageLoader
+    private var cellControllers = [IndexPath: CakeImageCellController]()
 
     public init(viewModel: CakeViewModel, imageLoader: CakeImageLoader) {
         self.viewModel = viewModel
@@ -70,28 +71,31 @@ extension CakeListViewController: UITableViewDataSource, UITableViewDelegate {
         viewModel.cakeList.count
     }
 
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.fadeIn(at: indexPath)
+    }
+    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellModel = viewModel.cakeList[indexPath.row]
-        guard let cell = configureCakeCell(tableView, with: cellModel) else { return UITableViewCell() }
-        cell.setBackgroundColor(for: indexPath)
-        return cell
+        cellController(forRowAt: indexPath).view()
     }
 
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         cellHeight
     }
 
-    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.fadeIn(at: indexPath)
+    public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        removeCellController(forRowAt: indexPath)
     }
-
-    private func configureCakeCell(_ tableView: UITableView, with item: CakeItem?) -> CakeCell? {
-        guard let cell = tableView.dequeueReusableCell(CakeCell.self),
-              let item = item else { return nil }
-        cell.titleLabel.text = item.title
-        cell.descriptionLabel.text = item.desc
-        imageLoader.loadImage(from: item.image, into: cell.cakeImageView)
-        return cell
+    
+    private func removeCellController(forRowAt indexPath: IndexPath) {
+        cellControllers[indexPath] = nil
+    }
+    
+    private func cellController(forRowAt indexPath: IndexPath) -> CakeImageCellController {
+        let cellModel = viewModel.cakeList[indexPath.row]
+        let cellController = CakeImageCellController(model: cellModel, imageLoader: imageLoader)
+        cellControllers[indexPath] = cellController
+        return cellController
     }
 }
 

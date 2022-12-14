@@ -45,6 +45,7 @@
 		EC71F0B32944B523000A86C7 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = EC71F0B22944B523000A86C7 /* SDWebImage */; };
 		EC71F0B62944B575000A86C7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = EC71F0B52944B575000A86C7 /* Alamofire */; };
 		EC71F0B92944B5B6000A86C7 /* ViewControllerPresentationSpy in Frameworks */ = {isa = PBXBuildFile; productRef = EC71F0B82944B5B6000A86C7 /* ViewControllerPresentationSpy */; };
+		EC7C5C22294A663900F89E85 /* CakeImageCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7C5C21294A663900F89E85 /* CakeImageCellController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		8F30D6F02521271A00F542A4 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		8F30D6F22521286700F542A4 /* UIView+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animation.swift"; sourceTree = "<group>"; };
 		8F75C6012525CC1B001A7168 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
+		EC7C5C21294A663900F89E85 /* CakeImageCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CakeImageCellController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				8F30D6E225211B4000F542A4 /* CakeListViewController.swift */,
+				EC7C5C21294A663900F89E85 /* CakeImageCellController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				8F30D6AC2520EA2900F542A4 /* CakeLoader.swift in Sources */,
 				8F30D6B42520F38000F542A4 /* CakeImageLoader.swift in Sources */,
 				8F30D6872520DD6A00F542A4 /* SceneDelegate.swift in Sources */,
+				EC7C5C22294A663900F89E85 /* CakeImageCellController.swift in Sources */,
 				8F30D6E325211B4000F542A4 /* CakeListViewController.swift in Sources */,
 				8F30D6C92520F6AC00F542A4 /* Constants.swift in Sources */,
 			);
