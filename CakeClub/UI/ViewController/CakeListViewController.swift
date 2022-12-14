@@ -20,20 +20,24 @@ public class CakeListViewController: UIViewController {
         return headerView
     }()
 
-    private var viewModel: CakeViewModel?
-    private var imageLoader: CakeImageLoader?
+    private let viewModel: CakeViewModel
+    private let imageLoader: CakeImageLoader
     private var tableModel = CakeList()
 
-    public convenience init(viewModel: CakeViewModel, imageLoader: CakeImageLoader) {
-        self.init()
+    public init(viewModel: CakeViewModel, imageLoader: CakeImageLoader) {
         self.viewModel = viewModel
         self.imageLoader = imageLoader
+        super.init(nibName: nil, bundle: nil)
     }
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewModel?.loadCakes()
+        viewModel.loadCakes()
 
         view.addSubview(tableView)
         tableView.fillSuperview()
@@ -41,11 +45,11 @@ public class CakeListViewController: UIViewController {
 
     private func binded(_ tableView: UITableView) -> UITableView {
         configure(tableView)
-        viewModel?.onLoadSuccess = strongify(weak: tableView) { strongTableView in
+        viewModel.onLoadSuccess = strongify(weak: tableView) { strongTableView in
             strongTableView.reloadData()
         }
 
-        viewModel?.onLoadFailure = strongify(weak: self) { strongSelf in
+        viewModel.onLoadFailure = strongify(weak: self) { strongSelf in
             guaranteeMainThread {
                 strongSelf.showBasicAlert(title: Constant.Text.alertTitle, message: Constant.Text.alertMessage)
             }
@@ -64,11 +68,11 @@ public class CakeListViewController: UIViewController {
 
 extension CakeListViewController: UITableViewDataSource, UITableViewDelegate {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel?.cakeList.count ?? 0
+        viewModel.cakeList.count
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellModel = viewModel?.cakeList[indexPath.row]
+        let cellModel = viewModel.cakeList[indexPath.row]
         guard let cell = configureCakeCell(tableView, with: cellModel) else { return UITableViewCell() }
         cell.setBackgroundColor(for: indexPath)
         return cell
@@ -87,7 +91,7 @@ extension CakeListViewController: UITableViewDataSource, UITableViewDelegate {
               let item = item else { return nil }
         cell.titleLabel.text = item.title
         cell.descriptionLabel.text = item.desc
-        imageLoader?.loadImage(from: item.image, into: cell.cakeImageView)
+        imageLoader.loadImage(from: item.image, into: cell.cakeImageView)
         return cell
     }
 }
