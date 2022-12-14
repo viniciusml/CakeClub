@@ -22,7 +22,6 @@ public class CakeListViewController: UIViewController {
 
     private let viewModel: CakeViewModel
     private let imageLoader: CakeImageLoader
-    private var tableModel = CakeList()
 
     public init(viewModel: CakeViewModel, imageLoader: CakeImageLoader) {
         self.viewModel = viewModel
