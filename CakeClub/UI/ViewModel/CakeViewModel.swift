@@ -9,12 +9,11 @@
 import Foundation
 
 public class CakeViewModel {
-    typealias Observer = (() -> Void)
+    typealias Observer<T> = (T) -> Void
     private let cakeLoader: CakeLoader
 
-    var onLoadSuccess: Observer?
-    var onLoadFailure: Observer?
-    private(set) var cakeList = CakeList()
+    var onLoadSuccess: Observer<CakeList>?
+    var onLoadFailure: Observer<Void>?
 
     public init(cakeLoader: CakeLoader) {
         self.cakeLoader = cakeLoader
@@ -24,10 +23,10 @@ public class CakeViewModel {
         cakeLoader.load(completion: strongify(weak: self, closure: { strongSelf, result in
             switch result {
             case let .success(cakeList):
-                strongSelf.cakeList = cakeList.capitalized()
-                strongSelf.onLoadSuccess?()
+                let list = cakeList.capitalized()
+                strongSelf.onLoadSuccess?(list)
             case .failure:
-                strongSelf.onLoadFailure?()
+                strongSelf.onLoadFailure?(())
             }
         }))
     }

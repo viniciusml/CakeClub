@@ -9,48 +9,41 @@
 import UIKit
 
 public class CakeListViewController: UIViewController {
+    public typealias CallBack = () -> Void
+    
     private var cellHeight: CGFloat { 260 }
     private var headerHeight: CGFloat { 180 }
     private var headerWidth: CGFloat { self.view.bounds.width }
 
-    private(set) public lazy var tableView = binded(UITableView())
+    private(set) public lazy var tableView = UITableView()
     private(set) public lazy var headerView: StretchyTableHeaderView = {
         let headerView = StretchyTableHeaderView(width: headerWidth, height: headerHeight)
         headerView.titleLabel.text = Constant.Text.listControllerTitle
         return headerView
     }()
-
-    private var viewModel: CakeViewModel?
-    private var imageLoader: CakeImageLoader?
-    private var tableModel = CakeList()
-
-    public convenience init(viewModel: CakeViewModel, imageLoader: CakeImageLoader) {
-        self.init()
-        self.viewModel = viewModel
-        self.imageLoader = imageLoader
+    
+    var tableModel = [CakeImageCellController]() {
+        didSet { tableView.reloadData() }
     }
+    var callBack: CallBack
 
+    public init(callBack: @escaping CallBack) {
+        self.callBack = callBack
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewModel?.loadCakes()
+        callBack()
 
         view.addSubview(tableView)
         tableView.fillSuperview()
-    }
-
-    private func binded(_ tableView: UITableView) -> UITableView {
         configure(tableView)
-        viewModel?.onLoadSuccess = strongify(weak: tableView) { strongTableView in
-            strongTableView.reloadData()
-        }
-
-        viewModel?.onLoadFailure = strongify(weak: self) { strongSelf in
-            guaranteeMainThread {
-                strongSelf.showBasicAlert(title: Constant.Text.alertTitle, message: Constant.Text.alertMessage)
-            }
-        }
-        return tableView
     }
 
     private func configure(_ tableView: UITableView) {
@@ -64,31 +57,25 @@ public class CakeListViewController: UIViewController {
 
 extension CakeListViewController: UITableViewDataSource, UITableViewDelegate {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel?.cakeList.count ?? 0
+        tableModel.count
     }
 
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.fadeIn(at: indexPath)
+    }
+    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellModel = viewModel?.cakeList[indexPath.row]
-        guard let cell = configureCakeCell(tableView, with: cellModel) else { return UITableViewCell() }
-        cell.setBackgroundColor(for: indexPath)
-        return cell
+        cellController(forRowAt: indexPath)
+            .view()
+            .withBackgroundColor(for: indexPath)
     }
 
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         cellHeight
     }
 
-    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.fadeIn(at: indexPath)
-    }
-
-    private func configureCakeCell(_ tableView: UITableView, with item: CakeItem?) -> CakeCell? {
-        guard let cell = tableView.dequeueReusableCell(CakeCell.self),
-              let item = item else { return nil }
-        cell.titleLabel.text = item.title
-        cell.descriptionLabel.text = item.desc
-        imageLoader?.loadImage(from: item.image, into: cell.cakeImageView)
-        return cell
+    private func cellController(forRowAt indexPath: IndexPath) -> CakeImageCellController {
+        tableModel[indexPath.row]
     }
 }
 

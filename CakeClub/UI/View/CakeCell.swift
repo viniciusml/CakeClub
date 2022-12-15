@@ -62,7 +62,7 @@ public class CakeCell: UITableViewCell {
         setupView()
     }
 
-    public func setBackgroundColor(for index: IndexPath) {
+    public func withBackgroundColor(for index: IndexPath) -> Self {
         let row = index.row
         let color: UIColor
 
@@ -74,6 +74,7 @@ public class CakeCell: UITableViewCell {
             color = Constant.Color.pink
         }
         cellBackgroundView.backgroundColor = color
+        return self
     }
 }
 
