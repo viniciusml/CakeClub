@@ -27,8 +27,6 @@ public class CakeListViewController: UIViewController {
     }
     var callBack: CallBack
 
-    private var cellControllers = [IndexPath: CakeImageCellController]()
-
     public init(callBack: @escaping CallBack) {
         self.callBack = callBack
         super.init(nibName: nil, bundle: nil)
@@ -76,14 +74,6 @@ extension CakeListViewController: UITableViewDataSource, UITableViewDelegate {
         cellHeight
     }
 
-    public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        removeCellController(forRowAt: indexPath)
-    }
-    
-    private func removeCellController(forRowAt indexPath: IndexPath) {
-        cellControllers[indexPath] = nil
-    }
-    
     private func cellController(forRowAt indexPath: IndexPath) -> CakeImageCellController {
         tableModel[indexPath.row]
     }
