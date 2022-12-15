@@ -17,9 +17,8 @@ final class CakeImageCellController {
         self.imageLoader = imageLoader
     }
     
-    func view() -> UITableViewCell {
+    func view() -> CakeCell {
         let cell = CakeCell()
-        //        cell.setBackgroundColor(for: indexPath)
         cell.titleLabel.text = model.title
         cell.descriptionLabel.text = model.desc
         imageLoader.loadImage(from: model.image, into: cell.cakeImageView)

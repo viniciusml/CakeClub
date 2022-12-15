@@ -76,7 +76,7 @@ extension CakeListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        cellController(forRowAt: indexPath).view()
+        cell(forRowAt: indexPath)
     }
 
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -91,11 +91,13 @@ extension CakeListViewController: UITableViewDataSource, UITableViewDelegate {
         cellControllers[indexPath] = nil
     }
     
-    private func cellController(forRowAt indexPath: IndexPath) -> CakeImageCellController {
+    private func cell(forRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellModel = viewModel.cakeList[indexPath.row]
         let cellController = CakeImageCellController(model: cellModel, imageLoader: imageLoader)
         cellControllers[indexPath] = cellController
-        return cellController
+        let cell = cellController.view()
+        cell.setBackgroundColor(for: indexPath)
+        return cell
     }
 }
 
