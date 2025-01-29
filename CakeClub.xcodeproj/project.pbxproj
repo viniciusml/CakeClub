@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -42,6 +42,9 @@
 		8F30D6F12521271A00F542A4 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6F02521271A00F542A4 /* UIViewController+Alert.swift */; };
 		8F30D6F32521286700F542A4 /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30D6F22521286700F542A4 /* UIView+Animation.swift */; };
 		8F75C6022525CC1B001A7168 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F75C6012525CC1B001A7168 /* HelperFunctions.swift */; };
+		EC240C292D4A6E32002BE941 /* ComposedCakeListTableViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC240C282D4A6E31002BE941 /* ComposedCakeListTableViewBuilder.swift */; };
+		EC240C2B2D4A6E3B002BE941 /* CakeListTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC240C2A2D4A6E3A002BE941 /* CakeListTableViewDelegate.swift */; };
+		EC240C2D2D4A6E44002BE941 /* CakeListTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC240C2C2D4A6E43002BE941 /* CakeListTableViewDataSource.swift */; };
 		EC71F0B32944B523000A86C7 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = EC71F0B22944B523000A86C7 /* SDWebImage */; };
 		EC71F0B62944B575000A86C7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = EC71F0B52944B575000A86C7 /* Alamofire */; };
 		EC71F0B92944B5B6000A86C7 /* ViewControllerPresentationSpy in Frameworks */ = {isa = PBXBuildFile; productRef = EC71F0B82944B5B6000A86C7 /* ViewControllerPresentationSpy */; };
@@ -106,6 +109,9 @@
 		8F30D6F02521271A00F542A4 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		8F30D6F22521286700F542A4 /* UIView+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animation.swift"; sourceTree = "<group>"; };
 		8F75C6012525CC1B001A7168 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
+		EC240C282D4A6E31002BE941 /* ComposedCakeListTableViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposedCakeListTableViewBuilder.swift; sourceTree = "<group>"; };
+		EC240C2A2D4A6E3A002BE941 /* CakeListTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CakeListTableViewDelegate.swift; sourceTree = "<group>"; };
+		EC240C2C2D4A6E43002BE941 /* CakeListTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CakeListTableViewDataSource.swift; sourceTree = "<group>"; };
 		EC7C5C21294A663900F89E85 /* CakeImageCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CakeImageCellController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -256,6 +262,9 @@
 		8F30D6DB25211AC400F542A4 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EC240C2C2D4A6E43002BE941 /* CakeListTableViewDataSource.swift */,
+				EC240C2A2D4A6E3A002BE941 /* CakeListTableViewDelegate.swift */,
+				EC240C282D4A6E31002BE941 /* ComposedCakeListTableViewBuilder.swift */,
 				8F30D6E225211B4000F542A4 /* CakeListViewController.swift */,
 				EC7C5C21294A663900F89E85 /* CakeImageCellController.swift */,
 			);
@@ -450,8 +459,10 @@
 				8F2B81E62528A51500C85B9F /* StretchyTableHeaderView.swift in Sources */,
 				8F30D6B62520F3A200F542A4 /* RemoteCakeImageLoader.swift in Sources */,
 				8F30D6CB2520F8E600F542A4 /* AFHTTPClient.swift in Sources */,
+				EC240C2B2D4A6E3B002BE941 /* CakeListTableViewDelegate.swift in Sources */,
 				8F30D6E125211B2000F542A4 /* CakeViewModel.swift in Sources */,
 				8F30D6A92520E71500F542A4 /* CakeItem.swift in Sources */,
+				EC240C292D4A6E32002BE941 /* ComposedCakeListTableViewBuilder.swift in Sources */,
 				8F30D6852520DD6A00F542A4 /* AppDelegate.swift in Sources */,
 				8F30D6F32521286700F542A4 /* UIView+Animation.swift in Sources */,
 				8F2B81E12528A48100C85B9F /* CodeView.swift in Sources */,
@@ -465,6 +476,7 @@
 				8F75C6022525CC1B001A7168 /* HelperFunctions.swift in Sources */,
 				8F30D6AE2520EA4D00F542A4 /* RemoteCakeLoader.swift in Sources */,
 				8F30D6AC2520EA2900F542A4 /* CakeLoader.swift in Sources */,
+				EC240C2D2D4A6E44002BE941 /* CakeListTableViewDataSource.swift in Sources */,
 				8F30D6B42520F38000F542A4 /* CakeImageLoader.swift in Sources */,
 				8F30D6872520DD6A00F542A4 /* SceneDelegate.swift in Sources */,
 				EC7C5C22294A663900F89E85 /* CakeImageCellController.swift in Sources */,
@@ -646,7 +658,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 88GXY442T6;
+				DEVELOPMENT_TEAM = 3SNY4A7B39;
 				INFOPLIST_FILE = CakeClub/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -664,7 +676,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 88GXY442T6;
+				DEVELOPMENT_TEAM = 3SNY4A7B39;
 				INFOPLIST_FILE = CakeClub/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -44,12 +44,12 @@ public class StretchyTableHeaderView: UIView {
         setupView()
     }
 
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        containerViewHeight.constant = scrollView.contentInset.top
-        let offsetY = -(scrollView.contentOffset.y + scrollView.contentInset.top)
+    func scrollViewDidScroll(contentOffset: CGPoint, contentInset: UIEdgeInsets) {
+        containerViewHeight.constant = contentInset.top
+        let offsetY = -(contentOffset.y + contentInset.top)
         containerView.clipsToBounds = offsetY <= 0
         imageViewBottom.constant = offsetY >= 0 ? 0 : -offsetY / 2
-        imageViewHeight.constant = max(offsetY + scrollView.contentInset.top, scrollView.contentInset.top)
+        imageViewHeight.constant = max(offsetY + contentInset.top, contentInset.top)
     }
 }
 
