@@ -11,19 +11,23 @@ import UIKit
 public class CakeListViewController: UIViewController {
     public typealias CallBack = () -> Void
     
-    private var cellHeight: CGFloat { 260 }
-    private var headerHeight: CGFloat { 180 }
-    private var headerWidth: CGFloat { self.view.bounds.width }
-
     private(set) public lazy var tableView = UITableView()
     private(set) public lazy var headerView: StretchyTableHeaderView = {
+        var headerHeight: CGFloat { 180 }
+        var headerWidth: CGFloat { self.view.bounds.width }
         let headerView = StretchyTableHeaderView(width: headerWidth, height: headerHeight)
         headerView.titleLabel.text = Constant.Text.listControllerTitle
         return headerView
     }()
     
+    private let dataSource = CakeListTableViewDataSource()
+    private let delegate = CakeListTableViewDelegate()
+    
     var tableModel = [CakeImageCellController]() {
-        didSet { tableView.reloadData() }
+        didSet {
+            let dataSource = tableView.dataSource(ofType: CakeListTableViewDataSource.self)
+            dataSource?.reveal(tableModel, in: tableView)
+        }
     }
     var callBack: CallBack
 
@@ -44,44 +48,22 @@ public class CakeListViewController: UIViewController {
         view.addSubview(tableView)
         tableView.fillSuperview()
         configure(tableView)
+        bindHeaderView(to: delegate)
     }
 
     private func configure(_ tableView: UITableView) {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.separatorStyle = .none
-        tableView.register(CakeCell.self)
-        tableView.tableHeaderView = headerView
-    }
-}
-
-extension CakeListViewController: UITableViewDataSource, UITableViewDelegate {
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tableModel.count
-    }
-
-    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.fadeIn(at: indexPath)
+        ComposedCakeListTableViewBuilder(headerView: headerView)
+            .withRegisteredCellType(CakeCell.self)
+            .withSeparatorStyle(.none)
+            .withDataSource(dataSource)
+            .withDelegate(delegate)
+            .build(with: tableView)
     }
     
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        cellController(forRowAt: indexPath)
-            .view()
-            .withBackgroundColor(for: indexPath)
-    }
-
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        cellHeight
-    }
-
-    private func cellController(forRowAt indexPath: IndexPath) -> CakeImageCellController {
-        tableModel[indexPath.row]
-    }
-}
-
-extension CakeListViewController: UIScrollViewDelegate {
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard let headerView = self.tableView.tableHeaderView as? StretchyTableHeaderView else { return }
-        headerView.scrollViewDidScroll(scrollView: scrollView)
+    private func bindHeaderView(to delegate: CakeListTableViewDelegate) {
+        delegate.onScrollCallBack = { [weak self] contentOffset, contentInset in
+            guard let self else { return }
+            self.headerView.scrollViewDidScroll(contentOffset: contentOffset, contentInset: contentInset)
+        }
     }
 }

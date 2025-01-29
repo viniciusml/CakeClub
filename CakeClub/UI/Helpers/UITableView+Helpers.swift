@@ -18,4 +18,8 @@ public extension UITableView {
         let className = String(describing: type)
         register(type, forCellReuseIdentifier: className)
     }
+    
+    func dataSource<T>(ofType type: T.Type) -> T? {
+        dataSource as? T
+    }
 }
